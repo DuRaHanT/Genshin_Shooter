@@ -21,8 +21,6 @@ public class WeaponRevolver : WeaponBase
     {
         muzzleFlashEffect.SetActive(false);
 
-        onMagazineEvent.Invoke(weaponSetting.currentMagazine);
-
         onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
 
         ResetVariables();
@@ -35,7 +33,6 @@ public class WeaponRevolver : WeaponBase
         impactMemoryPool = GetComponent<ImpactMemoryPool>();
         mainCamera = Camera.main;
 
-        weaponSetting.currentMagazine = weaponSetting.maxMagazine;
         weaponSetting.currentAmmo = weaponSetting.maxAmmo;
     }
 
@@ -48,7 +45,7 @@ public class WeaponRevolver : WeaponBase
     
     public override void StartReload()
     {
-        if (isReload == true || weaponSetting.currentMagazine <= 0) return;
+        if (isReload == true || weaponSetting.possessionAmmo <= 0) return;
 
         StopWeaponAction();
 
@@ -100,17 +97,24 @@ public class WeaponRevolver : WeaponBase
             {
                 isReload = false;
 
-                weaponSetting.currentMagazine--;
-                onMagazineEvent.Invoke(weaponSetting.currentMagazine);
-
-                weaponSetting.currentAmmo = weaponSetting.maxAmmo;
-                onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+                AmmoCheak();
 
                 yield break;
             }
 
             yield return null;
         }
+    }
+
+    void AmmoCheak()
+    {
+        if (CurrentpossessionAmmo <= 0) return;
+
+        int ammoToAdd = Mathf.Min(weaponSetting.maxAmmo - weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
+        weaponSetting.currentAmmo += ammoToAdd;
+        weaponSetting.possessionAmmo -= ammoToAdd;
+
+        onAmmoEvent.Invoke(weaponSetting.maxAmmo, weaponSetting.possessionAmmo);
     }
 
     void TwoStepRaycast()

@@ -7,9 +7,6 @@ public enum WeaponType { Main = 0, Sub, Melee, Throw }
 [System.Serializable]
 public class AmmoEvent : UnityEngine.Events.UnityEvent<int, int> { }
 
-[System.Serializable]
-public class MagazineEvent : UnityEngine.Events.UnityEvent<int> { }
-
 public abstract class WeaponBase : MonoBehaviour
 {
     [Header("WeaponBase")]
@@ -24,12 +21,11 @@ public abstract class WeaponBase : MonoBehaviour
     protected PlayerAnimatorController animator;
 
     [HideInInspector] public AmmoEvent onAmmoEvent = new AmmoEvent();
-    [HideInInspector] public MagazineEvent onMagazineEvent = new MagazineEvent();
 
     public PlayerAnimatorController Animator => animator;
     public WeaponName WeaponName => weaponSetting.weaponName;
-    public int CurrentMagazine => weaponSetting.currentMagazine;
-    public int MaxMagazine => weaponSetting.maxMagazine;
+    public int CurrentpossessionAmmo => weaponSetting.possessionAmmo;
+    public int MaxAmmo => 999;
 
     public abstract void StartWeaponAction(int type = 0);
     public abstract void StopWeaponAction(int type = 0);
@@ -48,10 +44,10 @@ public abstract class WeaponBase : MonoBehaviour
         animator = GetComponent<PlayerAnimatorController>();
     }
 
-    public virtual void IncreaseMagazine(int magazine)
+    public virtual void IncreaseMaxAmmo(int Ammo)
     {
-        weaponSetting.currentMagazine = CurrentMagazine + magazine > MaxMagazine ? MaxMagazine : CurrentMagazine + magazine;
+        weaponSetting.possessionAmmo = CurrentpossessionAmmo + Ammo > MaxAmmo ? MaxAmmo : CurrentpossessionAmmo + Ammo;
 
-        onMagazineEvent.Invoke(CurrentMagazine);
+        onAmmoEvent.Invoke(weaponSetting.currentAmmo ,CurrentpossessionAmmo);
     }
 }

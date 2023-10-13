@@ -38,7 +38,6 @@ public class WeaponAssaultRifle : WeaponBase
         ImpactMemoryPool = GetComponent<ImpactMemoryPool>();
         mainCamera = Camera.main;
 
-        weaponSetting.currentMagazine = weaponSetting.maxMagazine;
         weaponSetting.currentAmmo = weaponSetting.maxAmmo;
     }
 
@@ -47,7 +46,6 @@ public class WeaponAssaultRifle : WeaponBase
         PlaySound(audioClipTakeOutWeapon);
         muzzleFlashEffect.SetActive(false);
 
-        onMagazineEvent.Invoke(weaponSetting.currentMagazine);
         onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
 
         ResetVariables();
@@ -91,7 +89,7 @@ public class WeaponAssaultRifle : WeaponBase
 
     public override void StartReload()
     {
-        if (isReload == true || weaponSetting.currentMagazine <= 0) return;
+        if (isReload == true || weaponSetting.possessionAmmo <= 0) return;
 
         if (isAim == true) return;
 
@@ -123,7 +121,7 @@ public class WeaponAssaultRifle : WeaponBase
             if (weaponSetting.currentAmmo <= 0) return;
 
             weaponSetting.currentAmmo--;
-            onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+            onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
 
             string animation = animator.AimModeIs == true ? "AimFire" : "Fire";
             animator.Play(animation, -1, 0);
@@ -219,16 +217,23 @@ public class WeaponAssaultRifle : WeaponBase
             {
                 isReload = false;
 
-                weaponSetting.currentMagazine--;
-                onMagazineEvent.Invoke(weaponSetting.currentMagazine);
-
-                weaponSetting.currentAmmo = weaponSetting.maxAmmo;
-                onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+                AmmoCheak();
 
                 yield break;
             }
 
             yield return null;
         }
+    }
+
+    void AmmoCheak()
+    {
+        if (CurrentpossessionAmmo <= 0) return;
+
+        int ammoToAdd = Mathf.Min(weaponSetting.maxAmmo - weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
+        weaponSetting.currentAmmo += ammoToAdd;
+        weaponSetting.possessionAmmo -= ammoToAdd;
+
+        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
     }
 }

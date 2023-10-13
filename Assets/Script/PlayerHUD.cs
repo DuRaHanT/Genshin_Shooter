@@ -21,10 +21,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] TextMeshProUGUI textAmmo;
 
     [Header("Magazine")]
-    [SerializeField] GameObject magazineUIPrefab;
-    [SerializeField] Transform magazineParent;
     [SerializeField] int maxMagazineCount;
-    List<GameObject> magazineList;
 
     [Header("HP & BloodScreen UI")]
     [SerializeField] TextMeshProUGUI textHP;
@@ -35,13 +32,8 @@ public class PlayerHUD : MonoBehaviour
 
     public void SetupAllWeapon(WeaponBase[] weapons)
     {
-        SetupMagazine();
 
-        for(int i = 0; i < weapons.Length; ++i)
-        {
-            weapons[i].onAmmoEvent.AddListener(UpdateAmmoHUD);
-            weapons[i].onMagazineEvent.AddListener(UpdateMagazineHUD);
-        }
+        for(int i = 0; i < weapons.Length; ++i) weapons[i].onAmmoEvent.AddListener(UpdateAmmoHUD);
     }
 
     public void SwitchingWeapon(WeaponBase newWeapon)
@@ -61,32 +53,6 @@ public class PlayerHUD : MonoBehaviour
     void UpdateAmmoHUD(int currentAmmo, int maxAmmo)
     {
         textAmmo.text = $"<size=40>{currentAmmo}/</size>{maxAmmo}";
-    }
-
-    void SetupMagazine()
-    {
-        magazineList = new List<GameObject>();
-        
-        for(int i = 0; i < maxMagazineCount; ++i)
-        {
-            GameObject clone = Instantiate(magazineUIPrefab);
-            clone.transform.SetParent(magazineParent);
-            clone.SetActive(false);
-
-            magazineList.Add(clone);
-        }    
-    }
-
-    void UpdateMagazineHUD(int currentMagazine)
-    {
-        for(int i = 0; i < magazineList.Count; ++i)
-        {
-            magazineList[i].SetActive(false);
-        }
-        for(int i = 0; i< currentMagazine; ++i)
-        {
-            magazineList[i].SetActive(true);
-        }
     }
 
     void UpdateHPHUD(int previous, int current)

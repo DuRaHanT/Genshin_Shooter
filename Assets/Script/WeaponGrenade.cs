@@ -13,15 +13,12 @@ public class WeaponGrenade : WeaponBase
 
     void OnEnable()
     {
-        onMagazineEvent.Invoke(weaponSetting.currentMagazine);
         onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
     }
 
     void Awake()
     {
         base.Setup();
-
-        weaponSetting.currentMagazine = weaponSetting.maxMagazine;
         weaponSetting.currentAmmo = weaponSetting.maxAmmo;
     }
 
@@ -69,7 +66,7 @@ public class WeaponGrenade : WeaponBase
         onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
     }
 
-    public override void IncreaseMagazine(int ammo)
+    public override void IncreaseMaxAmmo(int ammo)
     {
         weaponSetting.currentAmmo = weaponSetting.currentAmmo + ammo > weaponSetting.maxAmmo ? weaponSetting.maxAmmo : weaponSetting.currentAmmo + ammo;
         onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);

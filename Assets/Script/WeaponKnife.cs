@@ -6,21 +6,9 @@ public class WeaponKnife : WeaponBase
 {
     [SerializeField] WeaponKnifeCollider weaponKnifecollider;
 
-    void OnEnable()
-    {
-        isAttack = false;
+    void OnEnable() => isAttack = false;
 
-        onMagazineEvent.Invoke(weaponSetting.currentMagazine);
-        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
-    }
-
-    void Awake()
-    {
-        base.Setup();
-
-        weaponSetting.currentMagazine = weaponSetting.maxMagazine;
-        weaponSetting.currentAmmo = weaponSetting.maxAmmo;
-    }
+    void Awake() => base.Setup();
 
     public override void StartWeaponAction(int type = 0)
     {

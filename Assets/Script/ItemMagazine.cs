@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemMagazine : ItemBase
 {
     [SerializeField] GameObject magazineEffectPrefab;
-    int increaseMagazine => 2;
+    [SerializeField] int increasePossessionAmmo;
     float rotateSpeed => 50;
 
     IEnumerator Start()
@@ -20,10 +20,22 @@ public class ItemMagazine : ItemBase
 
     public override void Use(GameObject entity)
     {
-        entity.GetComponentInChildren<WeaponSwitchSystem>().IncreasesMagazine(WeaponType.Main, increaseMagazine);
+        entity.GetComponentInChildren<WeaponSwitchSystem>().IncreasespossessionAmmo(WeaponType.Main, increasePossessionAmmo);
 
         Instantiate(magazineEffectPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
+    }
+
+    public override void StartWeaponAction(int type = 0)
+    {
+    }
+
+    public override void StopWeaponAction(int type = 0)
+    {
+    }
+
+    public override void StartReload()
+    {
     }
 }

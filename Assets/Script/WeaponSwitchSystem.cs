@@ -52,16 +52,16 @@ public class WeaponSwitchSystem : MonoBehaviour
         currentWeapon.gameObject.SetActive(true);
     }
 
-    public void IncreasesMagazine(WeaponType weaponType, int magazine)
+    public void IncreasespossessionAmmo(WeaponType weaponType, int Ammo)
     {
-        if (weapons[(int)weaponType] != null) weapons[(int)weaponType].IncreaseMagazine(magazine);
+        if (weapons[(int)weaponType] != null) weapons[(int)weaponType].IncreaseMaxAmmo(Ammo);
     }
 
-    public void IncreasesMagazine(int magazine)
+    public void IncreasespossessionAmmo(int Ammo)
     {
         for (int i = 0; i < weapons.Length; ++i)
         {
-            if (weapons[i] != null) weapons[i].IncreaseMagazine(magazine);
+            if (weapons[i] != null) weapons[i].IncreaseMaxAmmo(Ammo);
         }
             
     }
