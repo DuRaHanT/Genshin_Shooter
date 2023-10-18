@@ -13,7 +13,7 @@ public class WeaponGrenade : WeaponBase
 
     void OnEnable()
     {
-        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+        onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
     }
 
     void Awake()
@@ -24,7 +24,7 @@ public class WeaponGrenade : WeaponBase
 
     public override void StartWeaponAction(int type = 0)
     {
-        if (type == 0 && isAttack == false && weaponSetting.currentAmmo > 0) StartCoroutine("OnAttack");
+        if (type == 0 && isAttack == false && weaponSetting.currentGrenade > 0) StartCoroutine("OnAttack");
     }
 
     public override void StopWeaponAction(int type = 0)
@@ -62,13 +62,15 @@ public class WeaponGrenade : WeaponBase
         GameObject grenadeClone = Instantiate(grenadePrefab, grenadeSpawnPoint.position, Random.rotation);
         grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(weaponSetting.damage, transform.parent.forward);
 
-        weaponSetting.currentAmmo--;
-        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+        weaponSetting.currentGrenade--;
+        onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
     }
 
-    public override void IncreaseMaxAmmo(int ammo)
-    {
-        weaponSetting.currentAmmo = weaponSetting.currentAmmo + ammo > weaponSetting.maxAmmo ? weaponSetting.maxAmmo : weaponSetting.currentAmmo + ammo;
-        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
-    }
+
+    //수류탄 리필은 없을 예정
+    //public override void IncreaseMaxAmmo(int ammo)
+    //{
+    //    weaponSetting.currentAmmo = weaponSetting.currentAmmo + ammo > weaponSetting.maxAmmo ? weaponSetting.maxAmmo : weaponSetting.currentAmmo + ammo;
+    //    onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+    //}
 }

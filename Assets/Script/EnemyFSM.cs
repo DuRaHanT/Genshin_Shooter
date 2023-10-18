@@ -20,6 +20,8 @@ public class EnemyFSM : MonoBehaviour
     EnemyState enemyState = EnemyState.None;
     float lastAttackTime = 0;
 
+    [SerializeField] GameObject Hpbar;
+
     Status status;
     NavMeshAgent navMeshAgent;
     Transform target;
@@ -56,6 +58,7 @@ public class EnemyFSM : MonoBehaviour
 
     IEnumerator Idle()
     {
+
         StartCoroutine("AutoChangeFromIdleToWander");
 
         while (true)
@@ -209,6 +212,12 @@ public class EnemyFSM : MonoBehaviour
     public void TakeDamage(int damage)
     {
         bool isDie = status.DecreaseHp(damage);
+
+        float normalizedHP = (float)status.CurrentHP / (float)status.MaxHP;
+        Hpbar.transform.localScale = new Vector3(normalizedHP, 0.1f, 0.1f);
+        Hpbar.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, normalizedHP);
+
+        Hpbar.transform.LookAt(transform.position + Camera.main.transform.forward);
 
         if (isDie == true) enemyMemoryPool.DeactivateEnemy(gameObject);
     }

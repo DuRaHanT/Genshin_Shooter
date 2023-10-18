@@ -594,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: 182b7f11db452bc458d35a6c9eced06f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: 182b7f11db452bc458d35a6c9eced06f, type: 3}
       propertyPath: m_TagString
@@ -919,6 +919,7 @@ MonoBehaviour:
   walkSpeed: 3
   runSpeed: 5
   maxHP: 100
+  level: 0
 --- !u!82 &230964773
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1295,16 +1296,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a9f0e07e582c0489b508e1a3beca76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
+  weaponType: 0
   weaponSetting:
     weaponName: 2
-    damage: 50
+    baseDamage: 0
+    Level: 0
     currentAmmo: 0
     possessionAmmo: 0
     maxAmmo: 0
+    currentGrenade: 0
+    maxGrenade: 0
     attackRate: 0
     attackDistance: 0
-    isAutomaticAttack: 1
+    isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1516,10 +1520,13 @@ MonoBehaviour:
   weaponType: 0
   weaponSetting:
     weaponName: 0
-    damage: 50
+    baseDamage: 1
+    Level: 0
     currentAmmo: 0
     possessionAmmo: 30
     maxAmmo: 30
+    currentGrenade: 0
+    maxGrenade: 0
     attackRate: 0.1
     attackDistance: 30
     isAutomaticAttack: 0
@@ -2597,7 +2604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: 182b7f11db452bc458d35a6c9eced06f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: 182b7f11db452bc458d35a6c9eced06f, type: 3}
       propertyPath: m_IsActive
@@ -2686,10 +2693,13 @@ MonoBehaviour:
   weaponType: 3
   weaponSetting:
     weaponName: 3
-    damage: 200
-    currentAmmo: 2
+    baseDamage: 0
+    Level: 0
+    currentAmmo: 0
     possessionAmmo: 0
-    maxAmmo: 2
+    maxAmmo: 0
+    currentGrenade: 2
+    maxGrenade: 2
     attackRate: 0
     attackDistance: 0
     isAutomaticAttack: 0
@@ -2951,13 +2961,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f010de3aef3ec44aa9eb7a09f2ae879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
+  weaponType: 0
   weaponSetting:
     weaponName: 1
-    damage: 20
+    baseDamage: 0
+    Level: 0
     currentAmmo: 8
     possessionAmmo: 8
     maxAmmo: 8
+    currentGrenade: 0
+    maxGrenade: 0
     attackRate: 0.5
     attackDistance: 20
     isAutomaticAttack: 0
@@ -3093,6 +3106,11 @@ MonoBehaviour:
   - {fileID: 2494874811911125728, guid: 11d4b0cc3ed67d546b453064f4e5539e, type: 3}
   - {fileID: 2494874811911125728, guid: 8e906d18453e4cc458b07e62c4da4fdf, type: 3}
   - {fileID: 2494874811911125728, guid: fe757e3a001003b49ae5b23a40f5eeb6, type: 3}
+--- !u!1 &1118863774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 91896707736107201, guid: 536def174726f4d448d1dc907beb96b4, type: 3}
+  m_PrefabInstance: {fileID: 3620556484719373126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1290039160
 GameObject:
   m_ObjectHideFlags: 0
@@ -3588,6 +3606,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1466596689240561932, guid: c36831d792d89ba40a217a23ab074044, type: 3}
+      propertyPath: increasePossessionAmmo
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5273101372049494867, guid: c36831d792d89ba40a217a23ab074044, type: 3}
       propertyPath: m_Name
       value: Ammo
@@ -4161,6 +4183,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8918406554129634471, guid: 536def174726f4d448d1dc907beb96b4, type: 3}
+      propertyPath: Hpbar
+      value: 
+      objectReference: {fileID: 1118863774}
+    - target: {fileID: -8918406554129634471, guid: 536def174726f4d448d1dc907beb96b4, type: 3}
+      propertyPath: maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8918406554129634471, guid: 536def174726f4d448d1dc907beb96b4, type: 3}
+      propertyPath: currentHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 813482804526082481, guid: 536def174726f4d448d1dc907beb96b4, type: 3}
       propertyPath: m_Name
       value: Target

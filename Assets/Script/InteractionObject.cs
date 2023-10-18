@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class InteractionObject : MonoBehaviour
 {
     [Header("Interaction Object")]
-    [SerializeField] protected int maxHP = 100;
-    protected int currentHP;
+    [SerializeField] protected float maxHP;
+    [SerializeField] protected float currentHP;
 
     void Awake() => currentHP = maxHP;
 

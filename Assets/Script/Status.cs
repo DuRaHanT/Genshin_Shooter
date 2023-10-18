@@ -14,13 +14,16 @@ public class Status : MonoBehaviour
     [SerializeField] float runSpeed;
 
     [Header("HP")]
-    [SerializeField] int maxHP = 100;
+    [SerializeField] int maxHP;
     int currentHP;
+
+    // ex) Tutorial = 100, Easy = 10, Normal = 5, Hard = 1 
+    [HideInInspector] public int level = 10;
 
     public float WalkSpeed => walkSpeed;
     public float RunSpeed => runSpeed;
     public int CurrentHP => currentHP;
-    public int MaxHP => maxHP;
+    public int MaxHP => maxHP * level;
 
     void Awake() => currentHP = maxHP;
     

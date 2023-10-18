@@ -27,7 +27,7 @@ public class WeaponSwitchSystem : MonoBehaviour
     void Update() => UpdateSwitch();
 
     void UpdateSwitch()
-    {
+    { 
         if (!Input.anyKeyDown) return;
 
         int inputIndex = 0;

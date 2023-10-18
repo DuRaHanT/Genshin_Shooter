@@ -11,15 +11,27 @@ public class Target : InteractionObject
     AudioSource audioSource;
     bool isPossibleHit = true;
 
+    [SerializeField] GameObject Hpbar;
+
     void Awake() => audioSource = GetComponent<AudioSource>();
+
+    void Update()
+    {
+        float normalizedHP = currentHP / maxHP;
+        Hpbar.transform.localScale = new Vector3(normalizedHP, 0.1f, 0.1f);
+        Hpbar.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, normalizedHP);
+
+        Hpbar.transform.LookAt(transform.position + Camera.main.transform.forward);
+    }
 
     public override void TakeDamage(int damage)
     {
         currentHP -= damage;
 
-        if(currentHP <0 && isPossibleHit == true)
+        if (currentHP <=0 && isPossibleHit == true)
         {
             isPossibleHit = false;
+            Hpbar.SetActive(false);
             StartCoroutine("OnTargetDown");
         }
     }
@@ -43,7 +55,11 @@ public class Target : InteractionObject
 
         yield return StartCoroutine(OnAnimation(90, 0));
 
+        currentHP = maxHP;
+        Hpbar.transform.localRotation = Quaternion.identity;
+        Hpbar.SetActive(true);
         isPossibleHit = true;
+        
     }
 
     IEnumerator OnAnimation(float start, float end)

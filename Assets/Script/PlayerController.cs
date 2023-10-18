@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         status = GetComponent<Status>();
         audioSource = GetComponent<AudioSource>();
     }
+
     void Update() 
     {
         UpdateRotate();
@@ -104,5 +105,10 @@ public class PlayerController : MonoBehaviour
     public void SwitchingWeapon(WeaponBase newWeapon)
     {
         weapon = newWeapon;
+    }
+
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(20.0f);
     }
 }
