@@ -8,18 +8,11 @@ public class InventoryMainWeapon : MonoBehaviour
     [Header("Inventory")]
     public GameObject inventory;
     [SerializeField] Image inventoryImage;
-
     [SerializeField] RotateToMouse camMove;
-    [SerializeField] WeaponBase[] weaponBases;
 
     bool isState = true;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetMouseButtonDown(2)) ViewInventory();
-    }
-
-    void ViewInventory() 
+    public void ViewInventory() 
     {
         if (inventory.activeSelf == isState)
         {
