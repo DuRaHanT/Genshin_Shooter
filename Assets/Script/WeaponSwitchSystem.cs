@@ -12,6 +12,8 @@ public class WeaponSwitchSystem : MonoBehaviour
     WeaponBase currentWeapon;
     WeaponBase previousWeapon;
 
+    BulletSwitch bulletSwitch;
+
     void Awake()
     {
         playerHUD.SetupAllWeapon(weapons);
@@ -50,6 +52,7 @@ public class WeaponSwitchSystem : MonoBehaviour
         if (previousWeapon != null) previousWeapon.gameObject.SetActive(false);
 
         currentWeapon.gameObject.SetActive(true);
+
     }
 
     public void IncreasespossessionAmmo(WeaponType weaponType, int Ammo)

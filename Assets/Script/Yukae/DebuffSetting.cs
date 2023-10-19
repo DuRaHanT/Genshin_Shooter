@@ -1,13 +1,8 @@
 
-public enum DebuffName { Defalut, Burn, Air, Lightning, Freezing }
+public enum DebuffName { Nomal, Burn, Air, Lightning, Freezing, Water }
 
 [System.Serializable]
 public struct DebuffSetting
 {
     public DebuffName debufferName;
-    public bool defalut;
-    public bool burn;
-    public bool Air;
-    public bool Lightning;
-    public bool Freezing;
 }

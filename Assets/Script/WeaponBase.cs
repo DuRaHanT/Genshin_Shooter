@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponType { Main = 0, Sub, Melee, Throw, Burn = 0, Lightning = 0, Freezing = 0 }
+public enum WeaponType { Main = 0, Sub, Melee, Throw, }
 
 [System.Serializable]
 public class AmmoEvent : UnityEngine.Events.UnityEvent<int, int> { }
@@ -42,9 +42,6 @@ public abstract class WeaponBase : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<PlayerAnimatorController>();
-
-        // ex) Tutorial = 100, Easy = 10, Normal = 5, Hard = 1 
-        weaponSetting.Level = 100;
     }
 
     public virtual void IncreaseMaxAmmo(int Ammo)
