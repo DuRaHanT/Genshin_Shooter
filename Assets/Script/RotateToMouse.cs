@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RotateToMouse : MonoBehaviour
 {
-    float rotCamXAxisSpeed => 5;
-    float rotCamYAxisSpeed => 5;
+    [HideInInspector] public float rotCamXAxisSpeed = 5;
+    [HideInInspector] public float rotCamYAxisSpeed = 5;
     float limitMinX => -80;
     float limitMaxX => 50;
     float eulerAngleX;

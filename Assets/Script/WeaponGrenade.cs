@@ -11,6 +11,8 @@ public class WeaponGrenade : WeaponBase
     [SerializeField] GameObject grenadePrefab;
     [SerializeField] Transform grenadeSpawnPoint;
 
+    InventotyGrenade inventotyGrenade;
+
     void OnEnable()
     {
         onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
@@ -20,10 +22,13 @@ public class WeaponGrenade : WeaponBase
     {
         base.Setup();
         weaponSetting.currentAmmo = weaponSetting.maxAmmo;
+        inventotyGrenade = FindObjectOfType<InventotyGrenade>();
     }
 
     public override void StartWeaponAction(int type = 0)
     {
+        if (inventotyGrenade.inventory.activeSelf == true) return;
+
         if (type == 0 && isAttack == false && weaponSetting.currentGrenade > 0) StartCoroutine("OnAttack");
     }
 

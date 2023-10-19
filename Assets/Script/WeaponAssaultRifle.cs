@@ -29,6 +29,7 @@ public class WeaponAssaultRifle : WeaponBase
     CasingMemoryPool casingMemoryPool;
     ImpactMemoryPool ImpactMemoryPool;
     Camera mainCamera;
+    InventoryMainWeapon inventory;
 
     void Awake()
     {
@@ -36,6 +37,7 @@ public class WeaponAssaultRifle : WeaponBase
 
         casingMemoryPool = GetComponent<CasingMemoryPool>();
         ImpactMemoryPool = GetComponent<ImpactMemoryPool>();
+        inventory = FindObjectOfType<InventoryMainWeapon>();
         mainCamera = Camera.main;
 
         weaponSetting.currentAmmo = weaponSetting.maxAmmo;
@@ -109,6 +111,8 @@ public class WeaponAssaultRifle : WeaponBase
 
     public void OnAttack()
     {
+        if (inventory.inventory.activeSelf == true) return;
+
         if(Time.time - lastAttackTime > weaponSetting.attackRate)
         {
             if (animator.MoveSpeed > 0.5f)

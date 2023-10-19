@@ -858,6 +858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcaef2af52cef864aae0ac211500864e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotCamXAxisSpeed: 5
+  rotCamYAxisSpeed: 5
 --- !u!114 &230964769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,6 +1348,7 @@ MonoBehaviour:
   onAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
+  inventory: {fileID: 0}
   weaponKnifecollider: {fileID: 1541326045}
 --- !u!114 &317360652
 MonoBehaviour:
@@ -1700,6 +1703,7 @@ MonoBehaviour:
   onAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
+  inventory: {fileID: 0}
   muzzleFlashEffect: {fileID: 1920689557}
   casingSpawnPoint: {fileID: 2099355098}
   bulletSpawnPoint: {fileID: 265769862}
@@ -2952,6 +2956,7 @@ MonoBehaviour:
   onAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
+  inventory: {fileID: 0}
   audioClipFire: {fileID: 8300000, guid: fbb85ac510521f645bc786f2af29801f, type: 3}
   grenadePrefab: {fileID: 8926316912364368113, guid: 4173e9bd3b386144594c96f3a0f8493d, type: 3}
   grenadeSpawnPoint: {fileID: 800059885}
@@ -3222,6 +3227,7 @@ MonoBehaviour:
   onAmmoEvent:
     m_PersistentCalls:
       m_Calls: []
+  inventory: {fileID: 0}
   muzzleFlashEffect: {fileID: 157188950}
   bulletSpawnPoint: {fileID: 58023826}
   audioClipFire: {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
@@ -4308,6 +4314,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1529167978}
   inventoryImage: {fileID: 0}
+  camMove: {fileID: 230964768}
+  weaponBases:
+  - {fileID: 485195737}
+  - {fileID: 1112638055}
+  - {fileID: 317360651}
+  - {fileID: 1070592882}
 --- !u!4 &1760703372
 Transform:
   m_ObjectHideFlags: 0

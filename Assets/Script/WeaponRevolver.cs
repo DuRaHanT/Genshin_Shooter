@@ -54,7 +54,7 @@ public class WeaponRevolver : WeaponBase
 
     public void OnAttack()
     {
-        if(Time.time - lastAttackTime > weaponSetting.attackRate)
+        if (Time.time - lastAttackTime > weaponSetting.attackRate)
         {
             if (animator.MoveSpeed > 0.5f) return;
 

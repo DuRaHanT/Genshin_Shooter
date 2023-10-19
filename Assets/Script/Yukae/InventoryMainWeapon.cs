@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class InventoryMainWeapon : MonoBehaviour
 {
-
     [Header("Inventory")]
-    [SerializeField] GameObject inventory;
+    public GameObject inventory;
     [SerializeField] Image inventoryImage;
+
+    [SerializeField] RotateToMouse camMove;
+    [SerializeField] WeaponBase[] weaponBases;
 
     bool isState = true;
 
@@ -21,14 +23,21 @@ public class Inventory : MonoBehaviour
     {
         if (inventory.activeSelf == isState)
         {
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             inventory.SetActive(!isState);
+
+            camMove.rotCamXAxisSpeed = 5;
+            camMove.rotCamYAxisSpeed = 5;
         }
         else if (inventory.activeSelf == !isState)
         {
-            // 캠 고정 + 공격 금지 추가
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             inventory.SetActive(isState);
+
+            camMove.rotCamXAxisSpeed = 0;
+            camMove.rotCamYAxisSpeed = 0;
         }
     }
 }

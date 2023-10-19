@@ -15,11 +15,11 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected float lastAttackTime = 0;
     protected bool isReload = false;
-    protected bool isAttack = false;
     protected bool isAim = false;
+    protected bool isAttack = false;
     protected AudioSource audioSource;
     protected PlayerAnimatorController animator;
-
+ 
     [HideInInspector] public AmmoEvent onAmmoEvent = new AmmoEvent();
 
     public PlayerAnimatorController Animator => animator;
