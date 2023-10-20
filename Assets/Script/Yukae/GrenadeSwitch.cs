@@ -8,15 +8,16 @@ public class GrenadeSwitch : GrenadeBase
     [SerializeField] Button[] grenadeAbilityButton;
     [SerializeField] WeaponGrenade weaponGrenade;
 
-
     private void Awake()
     {
-        for (int i = 0; i < grenadeAbilityButton.Length; i++) grenadeAbilityButton[i].onClick.AddListener(GrenadeChange);
+        for (int i = 0; i < grenadeAbilityButton.Length; i++) grenadeAbilityButton[i].onClick.AddListener(() => GrenadeChange(grenadeAbilityButton[i].gameObject.name));
     }
 
-    void GrenadeChange()
+    void GrenadeChange(string buttonName)
     {
-        for (int i = 0; i < grenadeAbilityButton.Length; i++) if (grenadeAbilityButton[i].gameObject.name == GrenadeType.Air.ToString()) weaponGrenade.grenadeType = GrenadeType.Air;
+        if (buttonName == GrenadeType.None.ToString()) weaponGrenade.grenadeType = GrenadeType.None;
+        else if (buttonName == GrenadeType.Air.ToString()) weaponGrenade.grenadeType = GrenadeType.Air;
+        else if (buttonName == GrenadeType.Water.ToString()) weaponGrenade.grenadeType = GrenadeType.Water;
     }
 
     public override void StartReload()

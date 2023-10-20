@@ -20,7 +20,6 @@ public abstract class GrenadeBase : MonoBehaviour
     protected AudioSource audioSource;
     protected PlayerAnimatorController animator;
 
-    public GrenadeName GrenadeName => grenadeSetting.ability;
     public int CurrentGrenade => grenadeSetting.currentGrenade;
     public int CurrentpossessionGrenade => grenadeSetting.possessionGrenade;
 
