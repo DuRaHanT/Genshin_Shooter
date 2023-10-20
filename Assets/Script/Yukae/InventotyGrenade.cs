@@ -9,7 +9,11 @@ public class InventotyGrenade : MonoBehaviour
     [SerializeField] Image inventoryImage;
     [SerializeField] RotateToMouse camMove;
 
+    GrenadeHUD grenadeHUD;
+
     bool isState = true;
+
+    void Awake() => grenadeHUD = GetComponent<GrenadeHUD>();
 
     public void ViewInventory()
     {
@@ -26,7 +30,10 @@ public class InventotyGrenade : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+
             inventory.SetActive(isState);
+
+            grenadeHUD.SetupAllGrenade(grenadeHUD.grenades);
 
             camMove.rotCamXAxisSpeed = 0;
             camMove.rotCamYAxisSpeed = 0;

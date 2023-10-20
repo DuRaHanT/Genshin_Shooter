@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponGrenade : WeaponBase
+public class WeaponGrenade : GrenadeBase
 {
     [Header("Audio Clips")]
     [SerializeField] AudioClip audioClipFire;
@@ -15,24 +15,24 @@ public class WeaponGrenade : WeaponBase
 
     void OnEnable()
     {
-        onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
+        onGrenadeEvent.Invoke(grenadeSetting.currentGrenade, grenadeSetting.possessionGrenade);
     }
 
     void Awake()
     {
         base.Setup();
-        weaponSetting.currentAmmo = weaponSetting.maxAmmo;
+        grenadeSetting.currentGrenade = grenadeSetting.possessionGrenade;
         inventotyGrenade = FindObjectOfType<InventotyGrenade>();
     }
 
-    public override void StartWeaponAction(int type = 0)
+    public override void StartWeaponAction()
     {
         if (inventotyGrenade.inventory.activeSelf == true) return;
 
-        if (type == 0 && isAttack == false && weaponSetting.currentGrenade > 0) StartCoroutine("OnAttack");
+        if (isAttack == false && grenadeSetting.currentGrenade > 0) StartCoroutine("OnAttack");
     }
 
-    public override void StopWeaponAction(int type = 0)
+    public override void StopWeaponAction()
     {
     }
 
@@ -65,10 +65,10 @@ public class WeaponGrenade : WeaponBase
     public void SpawnGrenadeProjectile()
     {
         GameObject grenadeClone = Instantiate(grenadePrefab, grenadeSpawnPoint.position, Random.rotation);
-        grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(weaponSetting.damage, transform.parent.forward);
+        grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenadeSetting.grenadeDamage, transform.parent.forward);
 
-        weaponSetting.currentGrenade--;
-        onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
+        grenadeSetting.currentGrenade--;
+        onGrenadeEvent.Invoke(grenadeSetting.currentGrenade, grenadeSetting.possessionGrenade);
     }
 
 

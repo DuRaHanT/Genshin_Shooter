@@ -10,7 +10,11 @@ public class InventoryMainWeapon : MonoBehaviour
     [SerializeField] Image inventoryImage;
     [SerializeField] RotateToMouse camMove;
 
+    BulletHUD bulletHUD;
+
     bool isState = true;
+
+    void Awake() => bulletHUD = GetComponent<BulletHUD>();
 
     public void ViewInventory() 
     {
@@ -27,7 +31,10 @@ public class InventoryMainWeapon : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+
             inventory.SetActive(isState);
+
+            bulletHUD.SetupAllBullet(bulletHUD.bulletes);
 
             camMove.rotCamXAxisSpeed = 0;
             camMove.rotCamYAxisSpeed = 0;

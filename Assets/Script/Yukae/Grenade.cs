@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class Grenade : GrenadeBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void StartReload()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void StartWeaponAction()
     {
-        
+    }
+
+    public override void StopWeaponAction()
+    {
     }
 }

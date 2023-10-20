@@ -14,6 +14,7 @@ public class InventorySystem : MonoBehaviour
     {
         inventoryMainWeapon = GetComponent<InventoryMainWeapon>();
         inventotyGrenade = GetComponent<InventotyGrenade>();
+        
     }
 
     private void Update()
