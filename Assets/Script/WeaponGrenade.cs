@@ -32,14 +32,6 @@ public class WeaponGrenade : GrenadeBase
         if (isAttack == false && grenadeSetting.currentGrenade > 0) StartCoroutine("OnAttack");
     }
 
-    public override void StopWeaponAction()
-    {
-    }
-
-    public override void StartReload()
-    {
-    }
-
     IEnumerator OnAttack()
     {
         isAttack = true;

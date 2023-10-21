@@ -15,8 +15,7 @@ public class BulletBase : MonoBehaviour
 
     protected int maxBullet => 999;
 
-    protected BulletType BulletType;
-    public BulletName BulletName => bulletSetting.ability;
+    public BulletType BulletType;
     public int CurrentBullet => bulletSetting.currentBullet;
     public int CurrentpossessionBullet => bulletSetting.possessionBullet;
 

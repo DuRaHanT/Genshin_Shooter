@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class GrenadeSwitch : GrenadeBase
 {
     [SerializeField] Button[] grenadeAbilityButton;
-    [SerializeField] WeaponGrenade weaponGrenade;
+    WeaponGrenade weaponGrenade;
 
     private void Awake()
     {
+        weaponGrenade = GetComponent<WeaponGrenade>(); 
+
         for (int i = 0; i < grenadeAbilityButton.Length; i++) grenadeAbilityButton[i].onClick.AddListener(() => GrenadeChange(grenadeAbilityButton[i].gameObject.name));
     }
 
@@ -20,15 +22,7 @@ public class GrenadeSwitch : GrenadeBase
         else if (buttonName == GrenadeType.Water.ToString()) weaponGrenade.grenadeType = GrenadeType.Water;
     }
 
-    public override void StartReload()
-    {
-    }
-
     public override void StartWeaponAction()
-    {
-    }
-
-    public override void StopWeaponAction()
     {
     }
 }

@@ -15,8 +15,8 @@ public class BulletHUD : MonoBehaviour
         for (int i = 0; i < bullets.Length; i++) UpdateBullet(bullets[i].CurrentBullet, bullets[i].CurrentpossessionBullet);
     }
 
-    void UpdateBullet(int currentBullet, int maxBullet )
+    void UpdateBullet(int currentBullet, int possessionBullet)
     {
-        for (int i = 0; i < bulletTextes.Length; i++) bulletTextes[i].text = $"<size=40>{currentBullet}/</size>{maxBullet}";
+        for (int i = 0; i < bulletTextes.Length; i++) bulletTextes[i].text = $"<size=40>{currentBullet}/</size>{possessionBullet}";
     }
 }

@@ -26,8 +26,6 @@ public abstract class GrenadeBase : MonoBehaviour
     [HideInInspector] public GrenadeEvent onGrenadeEvent = new GrenadeEvent();
 
     public abstract void StartWeaponAction();
-    public abstract void StopWeaponAction();
-    public abstract void StartReload();
 
     protected void PlaySound(AudioClip clip)
     {

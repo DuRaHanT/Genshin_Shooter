@@ -7,26 +7,21 @@ using UnityEngine.UI;
 
 public class BulletSwitch : BulletBase
 {
-    Bullet currentBullet;
-    Bullet previousBullet;
+    [SerializeField] Button[] bulletAbilityButton;
+    MainWeapon mainWeapon;
 
-    [SerializeField] Image bulletIcon;
-    [SerializeField] Sprite[] icons;
-    [SerializeField] Vector2[] sizes;
+    private void Awake()
+    {
+        mainWeapon = GetComponent<MainWeapon>();
 
-    //public void SwitchingBullet(BulletType bulletType)
-    //{
-    //    if (bullets[(int)bulletType] == null) return;
+        for (int i = 0; i < bulletAbilityButton.Length; i++) bulletAbilityButton[i].onClick.AddListener(() => BulletChange(bulletAbilityButton[i].gameObject.name));
+    }
 
-    //    if (currentBullet != null) previousBullet = currentBullet;
-
-    //    currentBullet = bullets[(int)bulletType];
-
-    //    if (currentBullet == previousBullet) return;
-
-    //    bulletIcon.sprite = icons[(int)BulletName];
-    //    bulletIcon.rectTransform.sizeDelta = sizes[(int)BulletName];
-
-    //    Cursor.lockState = CursorLockMode.Locked;
-    //}
+    void BulletChange(string buttonName)
+    {
+        if (buttonName == BulletType.Nomal.ToString()) mainWeapon.BulletType = BulletType.Nomal;
+        else if (buttonName == BulletType.Burn.ToString()) mainWeapon.BulletType = BulletType.Burn;
+        else if (buttonName == BulletType.Lightning.ToString()) mainWeapon.BulletType = BulletType.Lightning;
+        else if (buttonName == BulletType.Freezing.ToString()) mainWeapon.BulletType = BulletType.Freezing;
+    }
 }
