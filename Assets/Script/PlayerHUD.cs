@@ -20,6 +20,9 @@ public class PlayerHUD : MonoBehaviour
     [Header("Swith System")]
     [SerializeField] BulletSwitch bulletSwitch;
     [SerializeField] GrenadeSwitch grenadeSwitch;
+    [SerializeField] Image imageAbilityIcon;
+    [SerializeField] Sprite[] spriteBulletIcon;
+    [SerializeField] Sprite[] spriteGrenadeIcon;
 
     [Header("Ammo")]
     [SerializeField] TextMeshProUGUI textAmmo;
@@ -53,14 +56,19 @@ public class PlayerHUD : MonoBehaviour
         imageWeaponIcon.sprite = spriteWeaponIcons[(int)weapon.WeaponName];
         imageWeaponIcon.rectTransform.sizeDelta = sizeWeaponIcons[(int)weapon.WeaponName];
 
-        if(weapon.WeaponName.ToString() == "AssaultRifle")
+        if (weapon.WeaponName.ToString() == "AssaultRifle")
         {
-            bulletSwitch.BulletChange(bulletSwitch.mainWeapon.BulletType.ToString());
+            imageAbilityIcon.sprite = spriteBulletIcon[(int)bulletSwitch.mainWeapon.BulletType];
         }
 
-        else if(weapon.WeaponName.ToString() == "HandGrenade")
+        else if (weapon.WeaponName.ToString() == "HandGrenade")
         {
-            grenadeSwitch.GrenadeChange(grenadeSwitch.grenade.grenadeType.ToString());
+            imageAbilityIcon.sprite = spriteGrenadeIcon[(int)grenadeSwitch.grenade.grenadeType];
+        }
+
+        else
+        {
+            imageAbilityIcon.sprite = null;
         }
     }
 

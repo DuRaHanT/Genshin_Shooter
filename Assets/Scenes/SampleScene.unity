@@ -1834,6 +1834,7 @@ MonoBehaviour:
   audioClipFire: {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
   audioClipReload: {fileID: 8300000, guid: 5b907074256e36d41b92e89fb0790633, type: 3}
   bullet: {fileID: 0}
+  inventory: {fileID: 1760703371}
   imageAim: {fileID: 1368221246}
 --- !u!114 &485195739
 MonoBehaviour:
@@ -1919,8 +1920,18 @@ MonoBehaviour:
   - {x: 82.4, y: 57}
   - {x: 200, y: 37.7}
   - {x: 47.2, y: 57}
-  bulletSwitch: {fileID: 0}
-  grenadeSwitch: {fileID: 0}
+  bulletSwitch: {fileID: 1068697407}
+  grenadeSwitch: {fileID: 2014047399}
+  imageAbilityIcon: {fileID: 1984801144}
+  spriteBulletIcon:
+  - {fileID: 21300000, guid: 2198842533873a840b59a8603d7f8e18, type: 3}
+  - {fileID: 21300000, guid: f21f6e0a35edecd4cb5ba426c4b72bc5, type: 3}
+  - {fileID: 21300000, guid: 07ff23970d6e9a64dad0c43d567758ec, type: 3}
+  - {fileID: 21300000, guid: 56f5bd8859a3ffc46bb8c98d2cedc18e, type: 3}
+  spriteGrenadeIcon:
+  - {fileID: 21300000, guid: 5f519eacbed16c9448b3594e2918d1c6, type: 3}
+  - {fileID: 21300000, guid: 095ff90ead9809e4bbf5452b730cbec7, type: 3}
+  - {fileID: 21300000, guid: 412892a2fbaf06046b4d3a5063bffd40, type: 3}
   textAmmo: {fileID: 2061435357}
   maxMagazineCount: 10
   textHP: {fileID: 20490253}
@@ -3213,7 +3224,7 @@ MonoBehaviour:
   - {fileID: 1716260817}
   - {fileID: 1767043024}
   - {fileID: 1809134477}
-  mainWeapon: {fileID: 0}
+  mainWeapon: {fileID: 1068697408}
   imageBulletIcon: {fileID: 1984801144}
   spriteBulletIcon:
   - {fileID: 21300000, guid: 2198842533873a840b59a8603d7f8e18, type: 3}
@@ -6547,7 +6558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2198842533873a840b59a8603d7f8e18, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6632,7 +6643,7 @@ MonoBehaviour:
   - {fileID: 1376803208}
   - {fileID: 1108494395}
   - {fileID: 1438756365}
-  grenade: {fileID: 0}
+  grenade: {fileID: 2014047400}
   imageGrenadeIcon: {fileID: 1984801144}
   spriteGrenadeIcon:
   - {fileID: 21300000, guid: 5f519eacbed16c9448b3594e2918d1c6, type: 3}

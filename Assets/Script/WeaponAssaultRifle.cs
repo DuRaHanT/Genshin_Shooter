@@ -20,6 +20,7 @@ public class WeaponAssaultRifle : WeaponBase
 
     [Header("Bullet")]
     [SerializeField] Bullet bullet;
+    [SerializeField] InventoryMainWeapon inventory;
 
     [Header("Aim UI")]
     [SerializeField] Image imageAim;
@@ -31,7 +32,6 @@ public class WeaponAssaultRifle : WeaponBase
     CasingMemoryPool casingMemoryPool;
     ImpactMemoryPool ImpactMemoryPool;
     Camera mainCamera;
-    InventoryMainWeapon inventory;
 
     void Awake()
     {
@@ -39,7 +39,6 @@ public class WeaponAssaultRifle : WeaponBase
 
         casingMemoryPool = GetComponent<CasingMemoryPool>();
         ImpactMemoryPool = GetComponent<ImpactMemoryPool>();
-        inventory = FindObjectOfType<InventoryMainWeapon>();
         mainCamera = Camera.main;
 
         weaponSetting.currentAmmo = weaponSetting.maxAmmo;

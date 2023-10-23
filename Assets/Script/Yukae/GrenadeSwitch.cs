@@ -6,17 +6,10 @@ using UnityEngine.UI;
 public class GrenadeSwitch : MonoBehaviour
 {
     [SerializeField] Button[] grenadeAbilityButton;
-    [HideInInspector] public Grenade grenade;
+    public Grenade grenade;
 
     [SerializeField] Image imageGrenadeIcon;
     [SerializeField] Sprite[] spriteGrenadeIcon;
-
-    private void Awake()
-    {
-        grenade = GetComponent<Grenade>(); 
-
-        //for (int i = 0; i < grenadeAbilityButton.Length; i++) grenadeAbilityButton[i].onClick.AddListener(() => GrenadeChange(grenadeAbilityButton[i].gameObject.name)); 오류 발생
-    }
 
     public void GrenadeChange(string buttonName)
     {
