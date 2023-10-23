@@ -12,8 +12,6 @@ public class WeaponSwitchSystem : MonoBehaviour
     WeaponBase currentWeapon;
     WeaponBase previousWeapon;
 
-    BulletSwitch bulletSwitch;
-
     void Awake()
     {
         playerHUD.SetupAllWeapon(weapons);

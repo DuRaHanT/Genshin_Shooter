@@ -17,6 +17,10 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] Sprite[] spriteWeaponIcons;
     [SerializeField] Vector2[] sizeWeaponIcons;
 
+    [Header("Swith System")]
+    [SerializeField] BulletSwitch bulletSwitch;
+    [SerializeField] GrenadeSwitch grenadeSwitch;
+
     [Header("Ammo")]
     [SerializeField] TextMeshProUGUI textAmmo;
 
@@ -48,6 +52,16 @@ public class PlayerHUD : MonoBehaviour
         textWeaponName.text = weapon.WeaponName.ToString();
         imageWeaponIcon.sprite = spriteWeaponIcons[(int)weapon.WeaponName];
         imageWeaponIcon.rectTransform.sizeDelta = sizeWeaponIcons[(int)weapon.WeaponName];
+
+        if(weapon.WeaponName.ToString() == "AssaultRifle")
+        {
+            bulletSwitch.BulletChange(bulletSwitch.mainWeapon.BulletType.ToString());
+        }
+
+        else if(weapon.WeaponName.ToString() == "HandGrenade")
+        {
+            grenadeSwitch.GrenadeChange(grenadeSwitch.grenade.grenadeType.ToString());
+        }
     }
 
     void UpdateAmmoHUD(int currentAmmo, int maxAmmo)

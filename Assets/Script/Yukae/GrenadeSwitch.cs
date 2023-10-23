@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GrenadeSwitch : GrenadeBase
+public class GrenadeSwitch : MonoBehaviour
 {
     [SerializeField] Button[] grenadeAbilityButton;
-    WeaponGrenade weaponGrenade;
+    [HideInInspector] public Grenade grenade;
+
+    [SerializeField] Image imageGrenadeIcon;
+    [SerializeField] Sprite[] spriteGrenadeIcon;
 
     private void Awake()
     {
-        weaponGrenade = GetComponent<WeaponGrenade>(); 
+        grenade = GetComponent<Grenade>(); 
 
-        for (int i = 0; i < grenadeAbilityButton.Length; i++) grenadeAbilityButton[i].onClick.AddListener(() => GrenadeChange(grenadeAbilityButton[i].gameObject.name));
+        //for (int i = 0; i < grenadeAbilityButton.Length; i++) grenadeAbilityButton[i].onClick.AddListener(() => GrenadeChange(grenadeAbilityButton[i].gameObject.name)); 오류 발생
     }
 
-    void GrenadeChange(string buttonName)
+    public void GrenadeChange(string buttonName)
     {
-        if (buttonName == GrenadeType.None.ToString()) weaponGrenade.grenadeType = GrenadeType.None;
-        else if (buttonName == GrenadeType.Air.ToString()) weaponGrenade.grenadeType = GrenadeType.Air;
-        else if (buttonName == GrenadeType.Water.ToString()) weaponGrenade.grenadeType = GrenadeType.Water;
-    }
-
-    public override void StartWeaponAction()
-    {
+        if (buttonName == GrenadeType.None.ToString())
+        {
+            grenade.grenadeType = GrenadeType.None;
+            imageGrenadeIcon.sprite = spriteGrenadeIcon[(int)GrenadeType.None];
+        }
+        else if (buttonName == GrenadeType.Air.ToString())
+        {
+            grenade.grenadeType = GrenadeType.Air;
+            imageGrenadeIcon.sprite = spriteGrenadeIcon[(int)GrenadeType.Air];
+        }
+        else if (buttonName == GrenadeType.Water.ToString())
+        {
+            grenade.grenadeType = GrenadeType.Water;
+            imageGrenadeIcon.sprite = spriteGrenadeIcon[(int)GrenadeType.Water];
+        }
     }
 }

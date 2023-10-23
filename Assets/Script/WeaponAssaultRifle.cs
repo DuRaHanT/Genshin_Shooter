@@ -18,6 +18,8 @@ public class WeaponAssaultRifle : WeaponBase
     [SerializeField] AudioClip audioClipFire;
     [SerializeField] AudioClip audioClipReload;
 
+    [Header("Bullet")]
+    [SerializeField] Bullet bullet;
 
     [Header("Aim UI")]
     [SerializeField] Image imageAim;

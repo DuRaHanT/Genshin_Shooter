@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InventotyGrenade : MonoBehaviour
 {
     public GameObject inventory;
-    [SerializeField] Image inventoryImage;
     [SerializeField] RotateToMouse camMove;
 
     GrenadeHUD grenadeHUD;

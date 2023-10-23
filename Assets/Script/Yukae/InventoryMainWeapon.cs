@@ -7,7 +7,6 @@ public class InventoryMainWeapon : MonoBehaviour
 {
     [Header("Inventory")]
     public GameObject inventory;
-    [SerializeField] Image inventoryImage;
     [SerializeField] RotateToMouse camMove;
 
     BulletHUD bulletHUD;

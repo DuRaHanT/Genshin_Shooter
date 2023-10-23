@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponGrenade : GrenadeBase
+public class WeaponGrenade : WeaponBase
 {
     [Header("Audio Clips")]
     [SerializeField] AudioClip audioClipFire;
@@ -10,26 +10,27 @@ public class WeaponGrenade : GrenadeBase
     [Header("Grenade")]
     [SerializeField] GameObject grenadePrefab;
     [SerializeField] Transform grenadeSpawnPoint;
+    [SerializeField] Grenade grenade;
 
     InventotyGrenade inventotyGrenade;
 
     void OnEnable()
     {
-        onGrenadeEvent.Invoke(grenadeSetting.currentGrenade, grenadeSetting.possessionGrenade);
+        onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
     }
 
     void Awake()
     {
         base.Setup();
-        grenadeSetting.currentGrenade = grenadeSetting.possessionGrenade;
+        weaponSetting.currentGrenade = grenade.currentGrenade;
         inventotyGrenade = FindObjectOfType<InventotyGrenade>();
     }
 
-    public override void StartWeaponAction()
+    public override void StartWeaponAction(int type = 0)
     {
         if (inventotyGrenade.inventory.activeSelf == true) return;
 
-        if (isAttack == false && grenadeSetting.currentGrenade > 0) StartCoroutine("OnAttack");
+        if (isAttack == false && weaponSetting.currentGrenade > 0) StartCoroutine("OnAttack");
     }
 
     IEnumerator OnAttack()
@@ -57,10 +58,18 @@ public class WeaponGrenade : GrenadeBase
     public void SpawnGrenadeProjectile()
     {
         GameObject grenadeClone = Instantiate(grenadePrefab, grenadeSpawnPoint.position, Random.rotation);
-        grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenadeSetting.grenadeDamage, transform.parent.forward);
+        grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade.GrenadeDamege, transform.parent.forward);
 
-        grenadeSetting.currentGrenade--;
-        onGrenadeEvent.Invoke(grenadeSetting.currentGrenade, grenadeSetting.possessionGrenade);
+        weaponSetting.currentGrenade--;
+        onAmmoEvent.Invoke(weaponSetting.currentGrenade, grenade.possessionGrenade);
+    }
+
+    public override void StopWeaponAction(int type = 0)
+    {
+    }
+
+    public override void StartReload()
+    {
     }
 
 
