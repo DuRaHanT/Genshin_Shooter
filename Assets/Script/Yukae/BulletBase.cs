@@ -11,7 +11,7 @@ public enum BulletType { Nomal, Burn, Lightning, Freezing, }
 public class BulletBase : MonoBehaviour
 {
     [Header("BulletBase")]
-    [SerializeField] protected BulletSetting bulletSetting;
+    public BulletSetting bulletSetting;
 
     protected int maxBullet => 999;
 

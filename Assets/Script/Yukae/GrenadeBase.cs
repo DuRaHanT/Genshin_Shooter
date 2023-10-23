@@ -9,7 +9,7 @@ public enum GrenadeType { None, Air, Water, }
 
 public abstract class GrenadeBase : MonoBehaviour
 {
-    [SerializeField] protected GrenadeSetting grenadeSetting;
+    public GrenadeSetting grenadeSetting;
     public GrenadeType grenadeType;
 
     protected int maxGrenade => 99;

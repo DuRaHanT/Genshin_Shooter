@@ -5645,7 +5645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSetting:
     bulletDamage: 0
-    currentBullet: 30
+    currentBullet: 20
     possessionBullet: 30
     maxBullet: 999
   BulletType: 0
@@ -5920,7 +5920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSetting:
     bulletDamage: 0
-    currentBullet: 30
+    currentBullet: 10
     possessionBullet: 30
     maxBullet: 999
   BulletType: 0
@@ -6190,7 +6190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSetting:
     bulletDamage: 0
-    currentBullet: 30
+    currentBullet: 3
     possessionBullet: 30
     maxBullet: 999
   BulletType: 0
