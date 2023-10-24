@@ -19,7 +19,8 @@ public class WeaponAssaultRifle : WeaponBase
     [SerializeField] AudioClip audioClipReload;
 
     [Header("Bullet")]
-    [SerializeField] Bullet bullet;
+    [SerializeField] MainWeapon mainWeapon;
+    [SerializeField] Bullet[] bullets;
     [SerializeField] InventoryMainWeapon inventory;
 
     [Header("Aim UI")]
@@ -123,10 +124,29 @@ public class WeaponAssaultRifle : WeaponBase
 
             lastAttackTime = Time.time;
 
-            if (weaponSetting.currentAmmo <= 0) return;
-
-            weaponSetting.currentAmmo--;
-            onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
+            switch(mainWeapon.BulletType)
+            {
+                case BulletType.Nomal:
+                    if (bullets[(int)BulletType.Nomal].bulletSetting.currentBullet <= 0) return;
+                    bullets[(int)BulletType.Nomal].bulletSetting.currentBullet--;
+                    onAmmoEvent.Invoke(bullets[(int)BulletType.Nomal].bulletSetting.currentBullet, bullets[(int)BulletType.Nomal].bulletSetting.possessionBullet);
+                    break;
+                case BulletType.Burn:
+                    if (bullets[(int)BulletType.Burn].bulletSetting.currentBullet <= 0) return;
+                    bullets[(int)BulletType.Burn].bulletSetting.currentBullet--;
+                    onAmmoEvent.Invoke(bullets[(int)BulletType.Burn].bulletSetting.currentBullet, bullets[(int)BulletType.Burn].bulletSetting.possessionBullet);
+                    break;
+                case BulletType.Lightning:
+                    if (bullets[(int)BulletType.Lightning].bulletSetting.currentBullet <= 0) return;
+                    bullets[(int)BulletType.Lightning].bulletSetting.currentBullet--;
+                    onAmmoEvent.Invoke(bullets[(int)BulletType.Lightning].bulletSetting.currentBullet, bullets[(int)BulletType.Lightning].bulletSetting.possessionBullet);
+                    break;
+                case BulletType.Freezing:
+                    if (bullets[(int)BulletType.Freezing].bulletSetting.currentBullet <= 0) return;
+                    bullets[(int)BulletType.Freezing].bulletSetting.currentBullet--;
+                    onAmmoEvent.Invoke(bullets[(int)BulletType.Freezing].bulletSetting.currentBullet, bullets[(int)BulletType.Freezing].bulletSetting.possessionBullet);
+                    break;
+            }
 
             string animation = animator.AimModeIs == true ? "AimFire" : "Fire";
             animator.Play(animation, -1, 0);

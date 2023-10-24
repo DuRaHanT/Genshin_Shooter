@@ -621,7 +621,7 @@ ModelImporter:
       name: grenade_throw@assault_rifle_01
       takeName: Armature|grenade_throw@assault_rifle_01
       internalID: 0
-      firstFrame: 1
+      firstFrame: 0
       lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0

@@ -106,9 +106,4 @@ public class PlayerController : MonoBehaviour
     {
         weapon = newWeapon;
     }
-
-    IEnumerator DelayTime()
-    {
-        yield return new WaitForSeconds(20.0f);
-    }
 }

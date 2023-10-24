@@ -816,8 +816,8 @@ GameObject:
   - component: {fileID: 230964771}
   - component: {fileID: 230964770}
   - component: {fileID: 230964772}
-  - component: {fileID: 230964774}
   - component: {fileID: 230964773}
+  - component: {fileID: 230964774}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1431,17 +1431,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a9f0e07e582c0489b508e1a3beca76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 2
   weaponSetting:
     weaponName: 2
     damage: 0
     currentAmmo: 0
     possessionAmmo: 0
     maxAmmo: 0
-    currentGrenade: 0
-    maxGrenade: 0
     attackRate: 10
     attackDistance: 0
+    currentGrenade: 0
+    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068697407}
+      - m_Target: {fileID: 1242274573}
         m_TargetAssemblyTypeName: BulletSwitch, Assembly-CSharp
         m_MethodName: BulletChange
         m_Mode: 5
@@ -1819,10 +1819,10 @@ MonoBehaviour:
     currentAmmo: 0
     possessionAmmo: 30
     maxAmmo: 30
-    currentGrenade: 0
-    maxGrenade: 0
     attackRate: 0.1
     attackDistance: 30
+    currentGrenade: 0
+    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -1833,7 +1833,12 @@ MonoBehaviour:
   audioClipTakeOutWeapon: {fileID: 8300000, guid: 2ae41e984ff1f3e4a840a1a46b6a8816, type: 3}
   audioClipFire: {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
   audioClipReload: {fileID: 8300000, guid: 5b907074256e36d41b92e89fb0790633, type: 3}
-  bullet: {fileID: 0}
+  mainWeapon: {fileID: 1242274574}
+  bullets:
+  - {fileID: 446099345}
+  - {fileID: 1716260820}
+  - {fileID: 1767043027}
+  - {fileID: 1809134480}
   inventory: {fileID: 1760703371}
   imageAim: {fileID: 1368221246}
 --- !u!114 &485195739
@@ -1920,7 +1925,7 @@ MonoBehaviour:
   - {x: 82.4, y: 57}
   - {x: 200, y: 37.7}
   - {x: 47.2, y: 57}
-  bulletSwitch: {fileID: 1068697407}
+  bulletSwitch: {fileID: 1242274573}
   grenadeSwitch: {fileID: 2014047399}
   imageAbilityIcon: {fileID: 1984801144}
   spriteBulletIcon:
@@ -3175,83 +3180,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030972159}
   m_CullTransparentMesh: 1
---- !u!1 &1068697405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1068697406}
-  - component: {fileID: 1068697408}
-  - component: {fileID: 1068697407}
-  m_Layer: 6
-  m_Name: Bullet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1068697406
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068697405}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 585518609}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1068697407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068697405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d89f4f856b3e4e346aca7d4fe785e65d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletAbilityButton:
-  - {fileID: 446099342}
-  - {fileID: 1716260817}
-  - {fileID: 1767043024}
-  - {fileID: 1809134477}
-  mainWeapon: {fileID: 1068697408}
-  imageBulletIcon: {fileID: 1984801144}
-  spriteBulletIcon:
-  - {fileID: 21300000, guid: 2198842533873a840b59a8603d7f8e18, type: 3}
-  - {fileID: 21300000, guid: f21f6e0a35edecd4cb5ba426c4b72bc5, type: 3}
-  - {fileID: 21300000, guid: 07ff23970d6e9a64dad0c43d567758ec, type: 3}
-  - {fileID: 21300000, guid: 56f5bd8859a3ffc46bb8c98d2cedc18e, type: 3}
---- !u!114 &1068697408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068697405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be34df95e7d60d34180dd49d487d1d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSetting:
-    bulletDamage: 0
-    currentBullet: 0
-    possessionBullet: 0
-    maxBullet: 0
-  BulletType: 0
-  onBulletEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1070592879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3351,17 +3279,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8099abd5ae6d6640bae74f6845fde35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 3
   weaponSetting:
     weaponName: 3
     damage: 0
-    currentAmmo: 0
-    possessionAmmo: 0
+    currentAmmo: 2
+    possessionAmmo: 2
     maxAmmo: 0
-    currentGrenade: 0
-    maxGrenade: 0
     attackRate: 0
     attackDistance: 0
+    currentGrenade: 0
+    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -3369,7 +3297,12 @@ MonoBehaviour:
   audioClipFire: {fileID: 8300000, guid: fbb85ac510521f645bc786f2af29801f, type: 3}
   grenadePrefab: {fileID: 8926316912364368113, guid: 4173e9bd3b386144594c96f3a0f8493d, type: 3}
   grenadeSpawnPoint: {fileID: 800059885}
-  grenade: {fileID: 2014047400}
+  grenade:
+  - {fileID: 1376803207}
+  - {fileID: 1108494394}
+  - {fileID: 1438756364}
+  inventotyGrenade: {fileID: 1760703373}
+  mainGrenadeType: {fileID: 2014047400}
 --- !u!82 &1070592883
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3725,8 +3658,8 @@ MonoBehaviour:
   grenadeSetting:
     grenadeDamage: 0
     currentGrenade: 2
-    possessionGrenade: 2
-  grenadeType: 0
+    possessionGrenade: 5
+  grenadeType: 1
   onGrenadeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3911,17 +3844,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f010de3aef3ec44aa9eb7a09f2ae879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 1
   weaponSetting:
     weaponName: 1
     damage: 0
     currentAmmo: 8
     possessionAmmo: 8
     maxAmmo: 8
-    currentGrenade: 0
-    maxGrenade: 0
     attackRate: 0.5
     attackDistance: 20
+    currentGrenade: 0
+    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -4194,6 +4127,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159869909}
   m_CullTransparentMesh: 1
+--- !u!1 &1242274571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242274572}
+  - component: {fileID: 1242274574}
+  - component: {fileID: 1242274573}
+  m_Layer: 6
+  m_Name: Bullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1242274572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242274571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 585518609}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242274573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242274571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89f4f856b3e4e346aca7d4fe785e65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletAbilityButton:
+  - {fileID: 446099342}
+  - {fileID: 1716260817}
+  - {fileID: 1767043024}
+  - {fileID: 1809134477}
+  mainWeapon: {fileID: 1242274574}
+  imageBulletIcon: {fileID: 1984801144}
+  spriteBulletIcon:
+  - {fileID: 21300000, guid: 2198842533873a840b59a8603d7f8e18, type: 3}
+  - {fileID: 21300000, guid: f21f6e0a35edecd4cb5ba426c4b72bc5, type: 3}
+  - {fileID: 21300000, guid: 07ff23970d6e9a64dad0c43d567758ec, type: 3}
+  - {fileID: 21300000, guid: 56f5bd8859a3ffc46bb8c98d2cedc18e, type: 3}
+  bulletText: {fileID: 2061435357}
+--- !u!114 &1242274574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242274571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be34df95e7d60d34180dd49d487d1d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSetting:
+    bulletDamage: 0
+    currentBullet: 0
+    possessionBullet: 0
+    maxBullet: 0
+  BulletType: 0
+  onBulletEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1290039160
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,8 +4563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadeSetting:
     grenadeDamage: 0
-    currentGrenade: 2
-    possessionGrenade: 2
+    currentGrenade: 5
+    possessionGrenade: 5
   grenadeType: 0
   onGrenadeEvent:
     m_PersistentCalls:
@@ -4782,9 +4793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadeSetting:
     grenadeDamage: 0
-    currentGrenade: 2
-    possessionGrenade: 2
-  grenadeType: 0
+    currentGrenade: 1
+    possessionGrenade: 5
+  grenadeType: 2
   onGrenadeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5581,7 +5592,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068697407}
+      - m_Target: {fileID: 1242274573}
         m_TargetAssemblyTypeName: BulletSwitch, Assembly-CSharp
         m_MethodName: BulletChange
         m_Mode: 5
@@ -5648,7 +5659,7 @@ MonoBehaviour:
     currentBullet: 20
     possessionBullet: 30
     maxBullet: 999
-  BulletType: 0
+  BulletType: 1
   onBulletEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5856,7 +5867,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068697407}
+      - m_Target: {fileID: 1242274573}
         m_TargetAssemblyTypeName: BulletSwitch, Assembly-CSharp
         m_MethodName: BulletChange
         m_Mode: 5
@@ -5923,7 +5934,7 @@ MonoBehaviour:
     currentBullet: 10
     possessionBullet: 30
     maxBullet: 999
-  BulletType: 0
+  BulletType: 2
   onBulletEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6126,7 +6137,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068697407}
+      - m_Target: {fileID: 1242274573}
         m_TargetAssemblyTypeName: BulletSwitch, Assembly-CSharp
         m_MethodName: BulletChange
         m_Mode: 5
@@ -6193,7 +6204,7 @@ MonoBehaviour:
     currentBullet: 3
     possessionBullet: 30
     maxBullet: 999
-  BulletType: 0
+  BulletType: 3
   onBulletEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6643,12 +6654,13 @@ MonoBehaviour:
   - {fileID: 1376803208}
   - {fileID: 1108494395}
   - {fileID: 1438756365}
-  grenade: {fileID: 2014047400}
+  grenadeType: {fileID: 2014047400}
   imageGrenadeIcon: {fileID: 1984801144}
   spriteGrenadeIcon:
   - {fileID: 21300000, guid: 5f519eacbed16c9448b3594e2918d1c6, type: 3}
   - {fileID: 21300000, guid: 095ff90ead9809e4bbf5452b730cbec7, type: 3}
   - {fileID: 21300000, guid: 412892a2fbaf06046b4d3a5063bffd40, type: 3}
+  GrenadeText: {fileID: 2061435357}
 --- !u!114 &2014047400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6658,7 +6670,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2014047397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481f205b18036704398d674d20f0e051, type: 3}
+  m_Script: {fileID: 11500000, guid: bd362261c2fbae84fb9a0e54353882a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grenadeSetting:

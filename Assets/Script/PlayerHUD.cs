@@ -63,7 +63,7 @@ public class PlayerHUD : MonoBehaviour
 
         else if (weapon.WeaponName.ToString() == "HandGrenade")
         {
-            imageAbilityIcon.sprite = spriteGrenadeIcon[(int)grenadeSwitch.grenade.grenadeType];
+            imageAbilityIcon.sprite = spriteGrenadeIcon[(int)grenadeSwitch.grenadeType.grenadeType];
         }
 
         else

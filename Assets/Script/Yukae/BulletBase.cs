@@ -21,7 +21,7 @@ public class BulletBase : MonoBehaviour
 
     [HideInInspector] public BulletEvent onBulletEvent = new BulletEvent();
 
-    public virtual void IncreaseMaxAmmo(int Bullet)
+    public virtual void IncreaseMaxBullet(int Bullet)
     {
         bulletSetting.possessionBullet = CurrentpossessionBullet + Bullet > maxBullet ? maxBullet : CurrentpossessionBullet + Bullet;
 

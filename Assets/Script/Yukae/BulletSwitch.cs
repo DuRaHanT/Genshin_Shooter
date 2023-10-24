@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
+using TMPro;
 
 public class BulletSwitch : MonoBehaviour
 {
     [SerializeField] Button[] bulletAbilityButton;
     public MainWeapon mainWeapon;
-
     [SerializeField] Image imageBulletIcon;
     [SerializeField] Sprite[] spriteBulletIcon;
+    [SerializeField] TextMeshProUGUI bulletText;
 
     public void BulletChange(string buttonName)
     {
@@ -47,5 +46,6 @@ public class BulletSwitch : MonoBehaviour
             mainWeapon.bulletSetting.currentBullet = bulletAbilityButton[(int)BulletType.Freezing].GetComponent<Bullet>().bulletSetting.currentBullet;
             mainWeapon.bulletSetting.possessionBullet = bulletAbilityButton[(int)BulletType.Freezing].GetComponent<Bullet>().bulletSetting.possessionBullet;
         }
+        bulletText.text = $"<size=40>{mainWeapon.bulletSetting.currentBullet}/</size>{mainWeapon.bulletSetting.possessionBullet}";
     }
 }

@@ -10,9 +10,9 @@ public class WeaponGrenade : WeaponBase
     [Header("Grenade")]
     [SerializeField] GameObject grenadePrefab;
     [SerializeField] Transform grenadeSpawnPoint;
-    [SerializeField] Grenade grenade;
-
-    InventotyGrenade inventotyGrenade;
+    [SerializeField] Grenade[] grenade;
+    [SerializeField] InventotyGrenade inventotyGrenade;
+    [SerializeField] MainGrenadeType mainGrenadeType;
 
     void OnEnable()
     {
@@ -22,15 +22,14 @@ public class WeaponGrenade : WeaponBase
     void Awake()
     {
         base.Setup();
-        weaponSetting.currentGrenade = grenade.currentGrenade;
-        inventotyGrenade = FindObjectOfType<InventotyGrenade>();
+        weaponSetting.currentGrenade = mainGrenadeType.grenadeSetting.currentGrenade;
     }
 
     public override void StartWeaponAction(int type = 0)
     {
         if (inventotyGrenade.inventory.activeSelf == true) return;
 
-        if (isAttack == false && weaponSetting.currentGrenade > 0) StartCoroutine("OnAttack");
+        if (isAttack == false) StartCoroutine("OnAttack");
     }
 
     IEnumerator OnAttack()
@@ -57,11 +56,40 @@ public class WeaponGrenade : WeaponBase
 
     public void SpawnGrenadeProjectile()
     {
-        GameObject grenadeClone = Instantiate(grenadePrefab, grenadeSpawnPoint.position, Random.rotation);
-        grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade.GrenadeDamege, transform.parent.forward);
+        switch(mainGrenadeType.grenadeType)
+        {
+            case GrenadeType.None:
+                if (grenade[(int)GrenadeType.None].grenadeSetting.currentGrenade <= 0) return;
+                break;
+            case GrenadeType.Air:
+                if (grenade[(int)GrenadeType.Air].grenadeSetting.currentGrenade <= 0) return;
+                break;
+            case GrenadeType.Water:
+                if (grenade[(int)GrenadeType.Water].grenadeSetting.currentGrenade <= 0) return;
+                break;
+        }
 
-        weaponSetting.currentGrenade--;
-        onAmmoEvent.Invoke(weaponSetting.currentGrenade, grenade.possessionGrenade);
+        GameObject grenadeClone = Instantiate(grenadePrefab, grenadeSpawnPoint.position, Random.rotation);
+
+        switch(mainGrenadeType.grenadeType)
+        {
+            case GrenadeType.None:
+                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.None].grenadeSetting.grenadeDamage, transform.parent.forward);
+                grenade[(int)GrenadeType.None].grenadeSetting.currentGrenade--;
+                onAmmoEvent.Invoke(grenade[(int)GrenadeType.None].grenadeSetting.currentGrenade, (int)grenade[(int)GrenadeType.None].grenadeSetting.possessionGrenade);
+                break;
+            case GrenadeType.Air:
+                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.Air].grenadeSetting.grenadeDamage, transform.parent.forward);
+                grenade[(int)GrenadeType.Air].grenadeSetting.currentGrenade--;
+                onAmmoEvent.Invoke(grenade[(int)GrenadeType.Air].grenadeSetting.currentGrenade, (int)grenade[(int)GrenadeType.Air].grenadeSetting.possessionGrenade);
+                break;
+            case GrenadeType.Water:
+                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.Water].grenadeSetting.grenadeDamage, transform.parent.forward);
+                grenade[(int)GrenadeType.Water].grenadeSetting.currentGrenade--;
+                onAmmoEvent.Invoke(grenade[(int)GrenadeType.Water].grenadeSetting.currentGrenade, (int)grenade[(int)GrenadeType.Water].grenadeSetting.possessionGrenade);
+                break;
+        }
+        
     }
 
     public override void StopWeaponAction(int type = 0)
