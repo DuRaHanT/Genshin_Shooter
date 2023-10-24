@@ -19,7 +19,7 @@ public class WeaponAssaultRifle : WeaponBase
     [SerializeField] AudioClip audioClipReload;
 
     [Header("Bullet")]
-    [SerializeField] MainWeapon mainWeapon;
+    public MainWeapon mainWeapon;
     [SerializeField] Bullet[] bullets;
     [SerializeField] InventoryMainWeapon inventory;
 
