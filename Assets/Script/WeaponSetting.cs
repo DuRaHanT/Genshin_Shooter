@@ -11,9 +11,5 @@ public struct WeaponSetting
     public int maxAmmo;                                 // 최대 탄약 수
     public float attackRate;                            // 공격 속도
     public float attackDistance;                        // 공격 사거리
-
-    // 추후에 없앨것
-    public int currentGrenade;                          // 보유 수류탄 수
-    public int maxGrenade;                              // 최대 수류탄 수
     public bool isAutomaticAttack;                      // 연속 공격 여부
 }

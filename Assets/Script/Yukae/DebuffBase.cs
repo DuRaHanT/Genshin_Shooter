@@ -3,19 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Debuff : MonoBehaviour
+public class DebuffBase : MonoBehaviour
 {
     DebuffSetting debuffSetting;
 
     Dictionary<string, Action> reactions = new Dictionary<string, Action>();
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("ImpactEnemy"))
-        {
-            other.GetComponent<GameObject>().SetActive(true);
-        }
-    }
 
     void Reaction()
     {

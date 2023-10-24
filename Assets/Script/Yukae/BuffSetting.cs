@@ -1,5 +1,4 @@
 
-
 public class BuffSetting
 {
     public int resistance;

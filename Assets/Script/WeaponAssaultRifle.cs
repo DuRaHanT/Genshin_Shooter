@@ -176,8 +176,8 @@ public class WeaponAssaultRifle : WeaponBase
         {
             ImpactMemoryPool.SpawnImpact(hit);
 
-            if (hit.transform.CompareTag("ImpactEnemy")) hit.transform.GetComponent<EnemyFSM>().TakeDamage(weaponSetting.damage);
-            else if (hit.transform.CompareTag("InteractionObject")) hit.transform.GetComponent<InteractionObject>().TakeDamage(weaponSetting.damage);
+            if (hit.transform.CompareTag("ImpactEnemy")) hit.transform.GetComponent<EnemyFSM>().TakeDamage(mainWeapon.bulletSetting.bulletDamage);
+            else if (hit.transform.CompareTag("InteractionObject")) hit.transform.GetComponent<InteractionObject>().TakeDamage(mainWeapon.bulletSetting.bulletDamage);
         }
 
         Debug.DrawRay(bulletSpawnPoint.position, attackDirection * weaponSetting.attackDistance, Color.blue);

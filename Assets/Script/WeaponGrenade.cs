@@ -16,13 +16,13 @@ public class WeaponGrenade : WeaponBase
 
     void OnEnable()
     {
-        onAmmoEvent.Invoke(weaponSetting.currentGrenade, weaponSetting.maxGrenade);
+        onAmmoEvent.Invoke(mainGrenadeType.grenadeSetting.currentGrenade, mainGrenadeType.grenadeSetting.possessionGrenade);
     }
 
     void Awake()
     {
         base.Setup();
-        weaponSetting.currentGrenade = mainGrenadeType.grenadeSetting.currentGrenade;
+        weaponSetting.currentAmmo = mainGrenadeType.grenadeSetting.currentGrenade; // 아마 지워도 될듯
     }
 
     public override void StartWeaponAction(int type = 0)

@@ -211,6 +211,7 @@ public class EnemyFSM : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+
         bool isDie = status.DecreaseHp(damage);
 
         float normalizedHP = (float)status.CurrentHP / (float)status.MaxHP;
