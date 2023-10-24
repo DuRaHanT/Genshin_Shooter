@@ -12,7 +12,7 @@ public class WeaponGrenade : WeaponBase
     [SerializeField] Transform grenadeSpawnPoint;
     [SerializeField] Grenade[] grenade;
     [SerializeField] InventotyGrenade inventotyGrenade;
-    [SerializeField] MainGrenadeType mainGrenadeType;
+    public MainGrenadeType mainGrenadeType;
 
     void OnEnable()
     {
