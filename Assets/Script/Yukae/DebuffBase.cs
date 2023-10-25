@@ -5,53 +5,22 @@ using UnityEngine;
 
 public class DebuffBase : MonoBehaviour
 {
-    protected DebuffSetting debuffSetting;
+    public DebuffSetting debuffSetting;
     bool isState = true;
 
-    //Dictionary<string, Action> reactions = new Dictionary<string, Action>();
-
-    //void Reaction()
-    //{
-    //    reactions["burn_freezing"] = BurnFreezingReaction;
-    //    reactions["burn_lightning"] = BurnLightningReaction;
-    //    reactions["burn_air"] = BurnAirReaction;
-    //    reactions["burn_water"] = BurnWaterReaction;
-
-    //    reactions["air_freezing"] = AirFreezingReaction;
-    //    reactions["air_lightning"] = AirLightningReaction;
-    //    reactions["air_water"] = AirWaterReaction;
-
-    //    reactions["lightning_freezing"] = LightningFreezingReaction;
-    //    reactions["lightning_water"] = lightningWaterReaction;
-
-    //    reactions["freezing_water"] = freezingWaterReaction;
-    //}
-
-    //public void HandleDebuff(string debuff1, string debuff2)
-    //{
-    //    string key = debuff1 + "_" + debuff2;
-    //    if (reactions.ContainsKey(key))
-    //    {
-    //        reactions[key].Invoke();
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("해당 디버프 조합에 대한 반응이 없습니다: " + key);
-    //    }
-    //}
-
-    public void Reaction()
+    public void UpdateReaction()
     {
         if (debuffSetting.isBurn == isState && debuffSetting.isFreezing == isState) BurnFreezingReaction();
         else if (debuffSetting.isBurn == isState && debuffSetting.isLightning == isState) BurnLightningReaction();
-        else if (debuffSetting.isBurn == isState && debuffSetting.isAur == isState) BurnAirReaction();
+        else if (debuffSetting.isBurn == isState && debuffSetting.isAir == isState) BurnAirReaction();
         else if (debuffSetting.isBurn == isState && debuffSetting.isWater == isState) BurnWaterReaction();
-        else if (debuffSetting.isAur == isState && debuffSetting.isFreezing == isState) AirFreezingReaction();
-        else if (debuffSetting.isAur == isState && debuffSetting.isLightning == isState) AirLightningReaction();
-        else if (debuffSetting.isAur == isState && debuffSetting.isWater == isState) AirWaterReaction();
+        else if (debuffSetting.isAir == isState && debuffSetting.isFreezing == isState) AirFreezingReaction();
+        else if (debuffSetting.isAir == isState && debuffSetting.isLightning == isState) AirLightningReaction();
+        else if (debuffSetting.isAir == isState && debuffSetting.isWater == isState) AirWaterReaction();
         else if (debuffSetting.isLightning == isState && debuffSetting.isFreezing == isState) LightningFreezingReaction();
         else if (debuffSetting.isLightning == isState && debuffSetting.isWater == isState) LightningWaterReaction();
         else if (debuffSetting.isFreezing == isState && debuffSetting.isWater == isState) FreezingWaterReaction();
+        
     }
 
     void BurnFreezingReaction()
@@ -119,7 +88,7 @@ public class DebuffBase : MonoBehaviour
         debuffSetting.isBurn = !isState;
         debuffSetting.isFreezing = !isState;
         debuffSetting.isLightning = !isState;
-        debuffSetting.isAur = !isState;
+        debuffSetting.isAir = !isState;
         debuffSetting.isWater = !isState;
     }
 }

@@ -818,6 +818,7 @@ GameObject:
   - component: {fileID: 230964772}
   - component: {fileID: 230964773}
   - component: {fileID: 230964774}
+  - component: {fileID: 230964775}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1036,6 +1037,24 @@ MonoBehaviour:
   - {fileID: 1112638055}
   - {fileID: 317360651}
   - {fileID: 1070592882}
+--- !u!114 &230964775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230964766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01697920e271e9c49b2311e3c32420c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffSetting:
+    isBurn: 0
+    isAir: 0
+    isLightning: 0
+    isFreezing: 0
+    isWater: 0
 --- !u!1 &246496083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,8 +1459,6 @@ MonoBehaviour:
     maxAmmo: 0
     attackRate: 10
     attackDistance: 0
-    currentGrenade: 0
-    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -1821,8 +1838,6 @@ MonoBehaviour:
     maxAmmo: 30
     attackRate: 0.1
     attackDistance: 30
-    currentGrenade: 0
-    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -3288,8 +3303,6 @@ MonoBehaviour:
     maxAmmo: 0
     attackRate: 0
     attackDistance: 0
-    currentGrenade: 0
-    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:
@@ -3853,8 +3866,6 @@ MonoBehaviour:
     maxAmmo: 8
     attackRate: 0.5
     attackDistance: 20
-    currentGrenade: 0
-    maxGrenade: 0
     isAutomaticAttack: 0
   onAmmoEvent:
     m_PersistentCalls:

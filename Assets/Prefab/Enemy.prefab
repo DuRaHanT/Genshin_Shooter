@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7528857599867196097}
   - component: {fileID: 4427665275864754429}
   - component: {fileID: 912557775492951087}
+  - component: {fileID: -4806349144836744885}
+  - component: {fileID: -5182898170797614147}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: ImpactEnemy
@@ -55,6 +57,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 7742033919806346100}
   attackRange: 5
   attackRate: 1
+  Hpbar: {fileID: 0}
 --- !u!114 &7528857599867196097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +114,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-4806349144836744885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082454955016387687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d500301f529ad724d804f0c784142002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5182898170797614147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082454955016387687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01697920e271e9c49b2311e3c32420c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffSetting:
+    isBurn: 0
+    isAir: 0
+    isLightning: 0
+    isFreezing: 0
+    isWater: 0
 --- !u!1 &3378292106986425813
 GameObject:
   m_ObjectHideFlags: 0

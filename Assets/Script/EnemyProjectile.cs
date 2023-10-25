@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayType { Burn, Air, Lightning, Freezing, Water, }
+
 public class EnemyProjectile : MonoBehaviour
 {
     MovementTransform movement;
     float projectileDistance => 30;
     [SerializeField] int damage = 5;
+    PlayType playType;
 
     public void Setup(Vector3 position)
     {
@@ -40,7 +43,7 @@ public class EnemyProjectile : MonoBehaviour
         {
             //Debug.Log("Player Hit");
             other.GetComponent<PlayerController>().TakeDamage(damage);
-
+            other.GetComponent<PlayerController>().EnemyReaction(playType);
             Destroy(gameObject);
         }
     }

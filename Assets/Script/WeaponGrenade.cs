@@ -74,17 +74,17 @@ public class WeaponGrenade : WeaponBase
         switch(mainGrenadeType.grenadeType)
         {
             case GrenadeType.None:
-                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.None].grenadeSetting.grenadeDamage, transform.parent.forward);
+                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.None].grenadeSetting.grenadeDamage, transform.parent.forward, GrenadeType.None);
                 grenade[(int)GrenadeType.None].grenadeSetting.currentGrenade--;
                 onAmmoEvent.Invoke(grenade[(int)GrenadeType.None].grenadeSetting.currentGrenade, (int)grenade[(int)GrenadeType.None].grenadeSetting.possessionGrenade);
                 break;
             case GrenadeType.Air:
-                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.Air].grenadeSetting.grenadeDamage, transform.parent.forward);
+                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.Air].grenadeSetting.grenadeDamage, transform.parent.forward, GrenadeType.Air);
                 grenade[(int)GrenadeType.Air].grenadeSetting.currentGrenade--;
                 onAmmoEvent.Invoke(grenade[(int)GrenadeType.Air].grenadeSetting.currentGrenade, (int)grenade[(int)GrenadeType.Air].grenadeSetting.possessionGrenade);
                 break;
             case GrenadeType.Water:
-                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.Water].grenadeSetting.grenadeDamage, transform.parent.forward);
+                grenadeClone.GetComponent<WeaponGrenadeProjectile>().Setup(grenade[(int)GrenadeType.Water].grenadeSetting.grenadeDamage, transform.parent.forward, GrenadeType.Water);
                 grenade[(int)GrenadeType.Water].grenadeSetting.currentGrenade--;
                 onAmmoEvent.Invoke(grenade[(int)GrenadeType.Water].grenadeSetting.currentGrenade, (int)grenade[(int)GrenadeType.Water].grenadeSetting.possessionGrenade);
                 break;

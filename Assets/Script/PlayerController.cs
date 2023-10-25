@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     Status status;
     AudioSource audioSource;
     WeaponBase weapon;
+    DebuffBase debuffBase;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<MovementCharacterController>();
         status = GetComponent<Status>();
         audioSource = GetComponent<AudioSource>();
+        debuffBase = GetComponent<DebuffBase>();
     }
 
     void Update() 
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         UpdateMove();
         UpadteJump();
         UpdateWeaponAction();
+        debuffBase.UpdateReaction();
     }
     
     void UpdateRotate()
@@ -105,5 +108,41 @@ public class PlayerController : MonoBehaviour
     public void SwitchingWeapon(WeaponBase newWeapon)
     {
         weapon = newWeapon;
+    }
+
+    public void EnemyReaction(PlayType type)
+    {
+        switch(type)
+        {
+            case PlayType.Burn:
+                debuffBase.debuffSetting.isBurn = true;
+                break;
+            case PlayType.Air:
+                debuffBase.debuffSetting.isAir = true;
+                break;
+            case PlayType.Water:
+                debuffBase.debuffSetting.isWater = true;
+                break;
+            case PlayType.Freezing:
+                debuffBase.debuffSetting.isFreezing = true;
+                break;
+            case PlayType.Lightning:
+                debuffBase.debuffSetting.isLightning = true;
+                break;
+        }
+    }
+
+    public void GrenadeReaction(GrenadeType grenade)
+    {
+        switch (grenade)
+        {
+            case GrenadeType.Air:
+                debuffBase.debuffSetting.isAir = true;
+                break;
+            case GrenadeType.Water:
+                debuffBase.debuffSetting.isWater = true;
+                break;
+
+        }
     }
 }

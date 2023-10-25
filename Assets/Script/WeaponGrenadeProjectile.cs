@@ -13,12 +13,15 @@ public class WeaponGrenadeProjectile : MonoBehaviour
     int explosionDamage;
     new Rigidbody rigidbody;
 
-    public void Setup(int damage, Vector3 rotation)
+    GrenadeType grenadeType;
+
+    public void Setup(int damage, Vector3 rotation, GrenadeType type)
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddForce(rotation * throwForce);
 
         explosionDamage = damage;
+        grenadeType = type;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -33,6 +36,7 @@ public class WeaponGrenadeProjectile : MonoBehaviour
             if(player != null)
             {
                 player.TakeDamage((int)(explosionDamage * 0.2f));
+                player.GrenadeReaction(grenadeType);
                 continue;
             }
 
@@ -40,6 +44,7 @@ public class WeaponGrenadeProjectile : MonoBehaviour
             if(enemy != null)
             {
                 enemy.TakeDamage(explosionDamage);
+                enemy.GrenadeReaction(grenadeType);
                 continue;
             }
 

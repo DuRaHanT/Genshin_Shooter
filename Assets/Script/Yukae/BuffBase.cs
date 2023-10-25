@@ -5,4 +5,9 @@ using UnityEngine;
 public class BuffBase : MonoBehaviour
 {
     public BuffSetting buffSetting;
+
+    public void DamageUP(int damage)
+    {
+        damage = buffSetting.damageUP + damage;
+    }
 }

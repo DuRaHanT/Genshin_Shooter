@@ -26,6 +26,8 @@ public class EnemyFSM : MonoBehaviour
     NavMeshAgent navMeshAgent;
     Transform target;
     EnemyMemoryPool enemyMemoryPool;
+    DebuffBase debuffBase;
+    BuffBase buffBase;
 
     public void Setup(Transform target, EnemyMemoryPool enemyMemoryPool)
     {
@@ -33,9 +35,13 @@ public class EnemyFSM : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         this.target = target;
         this.enemyMemoryPool = enemyMemoryPool;
+        debuffBase = GetComponent<DebuffBase>();
+        buffBase = GetComponent<BuffBase>();
 
         navMeshAgent.updateRotation = false;
     }
+
+    void Update() => debuffBase.UpdateReaction();
 
     void OnEnable() => ChangeState(EnemyState.Idle);
 
@@ -212,6 +218,8 @@ public class EnemyFSM : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
+        damage = (buffBase.buffSetting.shield - damage) / buffBase.buffSetting.resistance;
+
         bool isDie = status.DecreaseHp(damage);
 
         float normalizedHP = (float)status.CurrentHP / (float)status.MaxHP;
@@ -221,5 +229,36 @@ public class EnemyFSM : MonoBehaviour
         Hpbar.transform.LookAt(transform.position + Camera.main.transform.forward);
 
         if (isDie == true) enemyMemoryPool.DeactivateEnemy(gameObject);
+    }
+
+    public void MainWeaponReaction(BulletType bullet)
+    {
+        switch (bullet)
+        {
+            case BulletType.Burn:
+                debuffBase.debuffSetting.isBurn = true;
+                break;
+            case BulletType.Lightning:
+                debuffBase.debuffSetting.isLightning = true;
+                break;
+            case BulletType.Freezing:
+                debuffBase.debuffSetting.isFreezing = true;
+                break;
+
+        }
+    }
+
+    public void GrenadeReaction(GrenadeType grenade)
+    {
+        switch (grenade)
+        {
+            case GrenadeType.Air:
+                debuffBase.debuffSetting.isAir = true;
+                break;
+            case GrenadeType.Water:
+                debuffBase.debuffSetting.isWater = true;
+                break;
+
+        }
     }
 }
