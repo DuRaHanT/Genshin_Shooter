@@ -218,7 +218,7 @@ public class EnemyFSM : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
-        damage = (buffBase.buffSetting.shield - damage) / buffBase.buffSetting.resistance;
+        //damage = buffBase.buffSetting.shield - (int)(damage * buffBase.buffSetting.resistance);
 
         bool isDie = status.DecreaseHp(damage);
 
