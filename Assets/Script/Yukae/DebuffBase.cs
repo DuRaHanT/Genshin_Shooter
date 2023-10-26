@@ -80,6 +80,8 @@ public class DebuffBase : MonoBehaviour
     void FreezingWaterReaction()
     {
         Debug.Log("freezing & water");
+        this.GetComponent<Status>().runSpeed = 0;
+        this.GetComponent<Status>().walkSpeed = 0;
         ResetDebuff();
     }
 

@@ -10,15 +10,13 @@ public class Status : MonoBehaviour
     [HideInInspector] public HPEvent onHPEvent = new HPEvent();
 
     [Header("Walk, Run Speed")]
-    [SerializeField] float walkSpeed;
-    [SerializeField] float runSpeed;
+    public float walkSpeed;
+    public float runSpeed;
 
     [Header("HP")]
     [SerializeField] int maxHP;
     int currentHP;
 
-    public float WalkSpeed => walkSpeed;
-    public float RunSpeed => runSpeed;
     public int CurrentHP => currentHP;
     public int MaxHP => maxHP;
 

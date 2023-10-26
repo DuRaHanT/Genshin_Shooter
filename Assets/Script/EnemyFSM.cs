@@ -88,7 +88,7 @@ public class EnemyFSM : MonoBehaviour
         float currentTime = 0;
         float maxTime = 10;
 
-        navMeshAgent.speed = status.WalkSpeed;
+        navMeshAgent.speed = status.walkSpeed;
 
         navMeshAgent.SetDestination(CalculateWanderPosition());
 
@@ -147,7 +147,7 @@ public class EnemyFSM : MonoBehaviour
     {
         while(true)
         {
-            navMeshAgent.speed = status.RunSpeed;
+            navMeshAgent.speed = status.runSpeed;
 
             navMeshAgent.SetDestination(target.position);
 

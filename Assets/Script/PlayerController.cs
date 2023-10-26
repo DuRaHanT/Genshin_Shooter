@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
             if (z > 0) isRun = Input.GetKey(KeyCodeRun);
 
-            movement.MoveSpeed = isRun == true ? status.RunSpeed : status.WalkSpeed;
+            movement.MoveSpeed = isRun == true ? status.runSpeed : status.walkSpeed;
             audioSource.clip = isRun == true ? audioClipWalk : audioClipWalk;
 
             if(audioSource.isPlaying == false)

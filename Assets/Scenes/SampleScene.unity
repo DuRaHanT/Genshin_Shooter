@@ -1647,6 +1647,18 @@ MonoBehaviour:
           m_StringArgument: Nomal
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1529167978}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &446099343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3732,6 +3744,18 @@ MonoBehaviour:
           m_StringArgument: Air
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 865968086}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1108494396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4636,6 +4660,18 @@ MonoBehaviour:
           m_StringArgument: None
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 865968086}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1376803209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4864,6 +4900,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Water
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 865968086}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1438756366
@@ -5615,6 +5663,18 @@ MonoBehaviour:
           m_StringArgument: Burn
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1529167978}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716260818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5890,6 +5950,18 @@ MonoBehaviour:
           m_StringArgument: Lightning
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1529167978}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1767043025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6158,6 +6230,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Freezing
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1529167978}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1809134478
