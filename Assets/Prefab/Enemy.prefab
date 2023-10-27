@@ -57,7 +57,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 7742033919806346100}
   attackRange: 5
   attackRate: 1
-  Hpbar: {fileID: 0}
+  Hpbar: {fileID: 3378292106986425813}
 --- !u!114 &7528857599867196097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   walkSpeed: 1.5
   runSpeed: 3
   maxHP: 100
+  currentHP: 0
 --- !u!195 &4427665275864754429
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -139,11 +140,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debuffSetting:
+    debuffType: 0
     isBurn: 0
     isAir: 0
     isLightning: 0
     isFreezing: 0
     isWater: 0
+  debuffIconImages: []
+  debuffIcon: {fileID: 0}
 --- !u!1 &3378292106986425813
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +160,7 @@ GameObject:
   - component: {fileID: 6987288247982091338}
   - component: {fileID: 4382170443882761971}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

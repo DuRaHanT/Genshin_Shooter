@@ -35,12 +35,14 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] Image imageBloodScreen;
     [SerializeField] AnimationCurve curveBloodScreen;
 
+    float zero => 0;
+    float one => 1;
+
     void Awake() => status.onHPEvent.AddListener(UpdateHPHUD);
 
     public void SetupAllWeapon(WeaponBase[] weapons)
     {
-
-        for(int i = 0; i < weapons.Length; ++i) weapons[i].onAmmoEvent.AddListener(UpdateAmmoHUD);
+        for (int i = 0; i < weapons.Length; ++i) weapons[i].onAmmoEvent.AddListener(UpdateAmmoHUD);
     }
 
     public void SwitchingWeapon(WeaponBase newWeapon)
@@ -58,24 +60,23 @@ public class PlayerHUD : MonoBehaviour
 
         if (weapon.WeaponName.ToString() == "AssaultRifle")
         {
+            imageAbilityIcon.color = new Color(imageAbilityIcon.color.r, imageAbilityIcon.color.g, imageAbilityIcon.color.b, one);
             imageAbilityIcon.sprite = spriteBulletIcon[(int)bulletSwitch.mainWeapon.BulletType];
         }
 
         else if (weapon.WeaponName.ToString() == "HandGrenade")
         {
+            imageAbilityIcon.color = new Color(imageAbilityIcon.color.r, imageAbilityIcon.color.g, imageAbilityIcon.color.b, one);
             imageAbilityIcon.sprite = spriteGrenadeIcon[(int)grenadeSwitch.grenadeType.grenadeType];
         }
 
         else
         {
-            imageAbilityIcon.sprite = null;
+            imageAbilityIcon.color = new Color(imageAbilityIcon.color.r, imageAbilityIcon.color.g, imageAbilityIcon.color.b, zero);
         }
     }
 
-    void UpdateAmmoHUD(int currentAmmo, int maxAmmo)
-    {
-        textAmmo.text = $"<size=40>{currentAmmo}/</size>{maxAmmo}";
-    }
+    void UpdateAmmoHUD(int currentAmmo, int maxAmmo) => textAmmo.text = $"<size=40>{currentAmmo}/</size>{maxAmmo}";
 
     void UpdateHPHUD(int previous, int current)
     {

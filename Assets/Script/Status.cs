@@ -14,21 +14,16 @@ public class Status : MonoBehaviour
     public float runSpeed;
 
     [Header("HP")]
-    [SerializeField] int maxHP;
-    int currentHP;
-
-    public int CurrentHP => currentHP;
-    public int MaxHP => maxHP;
+    public int maxHP;
+    public int currentHP;
 
     void Awake() => currentHP = maxHP;
     
     public bool DecreaseHp(int damage)
     {
-        int previousHP = currentHP;
-
         currentHP = currentHP - damage > 0 ? currentHP - damage : 0;
 
-        onHPEvent.Invoke(previousHP, currentHP);
+        onHPEvent.Invoke(currentHP, currentHP);
 
         if (currentHP == 0) return true;
 
@@ -37,10 +32,8 @@ public class Status : MonoBehaviour
 
     public void IncreaseHP(int hp)
     {
-        int previousHP = currentHP;
-
         currentHP = currentHP + hp > maxHP ? maxHP : currentHP + hp;
 
-        onHPEvent.Invoke(previousHP, currentHP);
+        onHPEvent.Invoke(currentHP, currentHP);
     }
 }

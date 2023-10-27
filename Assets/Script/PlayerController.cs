@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         UpadteJump();
         UpdateWeaponAction();
         debuffBase.UpdateReaction();
+        debuffBase.Debuff();
     }
     
     void UpdateRotate()
@@ -142,7 +143,6 @@ public class PlayerController : MonoBehaviour
             case GrenadeType.Water:
                 debuffBase.debuffSetting.isWater = true;
                 break;
-
         }
     }
 }

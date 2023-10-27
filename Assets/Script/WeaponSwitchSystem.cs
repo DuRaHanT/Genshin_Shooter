@@ -50,7 +50,6 @@ public class WeaponSwitchSystem : MonoBehaviour
         if (previousWeapon != null) previousWeapon.gameObject.SetActive(false);
 
         currentWeapon.gameObject.SetActive(true);
-
     }
 
     public void IncreasespossessionAmmo(WeaponType weaponType, int Ammo)
@@ -64,6 +63,5 @@ public class WeaponSwitchSystem : MonoBehaviour
         {
             if (weapons[i] != null) weapons[i].IncreaseMaxAmmo(Ammo);
         }
-            
     }
 }

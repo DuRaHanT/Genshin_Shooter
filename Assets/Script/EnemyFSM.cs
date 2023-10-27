@@ -222,7 +222,7 @@ public class EnemyFSM : MonoBehaviour
 
         bool isDie = status.DecreaseHp(damage);
 
-        float normalizedHP = (float)status.CurrentHP / (float)status.MaxHP;
+        float normalizedHP = (float)status.currentHP / (float)status.maxHP;
         Hpbar.transform.localScale = new Vector3(normalizedHP, 0.1f, 0.1f);
         Hpbar.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, normalizedHP);
 

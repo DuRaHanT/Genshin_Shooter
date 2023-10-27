@@ -50,7 +50,7 @@ public class WeaponAssaultRifle : WeaponBase
         PlaySound(audioClipTakeOutWeapon);
         muzzleFlashEffect.SetActive(false);
 
-        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.maxAmmo);
+        onAmmoEvent.Invoke(mainWeapon.bulletSetting.currentBullet, mainWeapon.bulletSetting.possessionBullet);
 
         ResetVariables();
     }
@@ -93,7 +93,7 @@ public class WeaponAssaultRifle : WeaponBase
 
     public override void StartReload()
     {
-        if (isReload == true || weaponSetting.possessionAmmo <= 0) return;
+        if (isReload == true || mainWeapon.bulletSetting.possessionBullet <= 0) return;
 
         if (isAim == true) return;
 
@@ -124,29 +124,7 @@ public class WeaponAssaultRifle : WeaponBase
 
             lastAttackTime = Time.time;
 
-            switch(mainWeapon.BulletType)
-            {
-                case BulletType.Nomal:
-                    if (bullets[(int)BulletType.Nomal].bulletSetting.currentBullet <= 0) return;
-                    bullets[(int)BulletType.Nomal].bulletSetting.currentBullet--;
-                    onAmmoEvent.Invoke(bullets[(int)BulletType.Nomal].bulletSetting.currentBullet, bullets[(int)BulletType.Nomal].bulletSetting.possessionBullet);
-                    break;
-                case BulletType.Burn:
-                    if (bullets[(int)BulletType.Burn].bulletSetting.currentBullet <= 0) return;
-                    bullets[(int)BulletType.Burn].bulletSetting.currentBullet--;
-                    onAmmoEvent.Invoke(bullets[(int)BulletType.Burn].bulletSetting.currentBullet, bullets[(int)BulletType.Burn].bulletSetting.possessionBullet);
-                    break;
-                case BulletType.Lightning:
-                    if (bullets[(int)BulletType.Lightning].bulletSetting.currentBullet <= 0) return;
-                    bullets[(int)BulletType.Lightning].bulletSetting.currentBullet--;
-                    onAmmoEvent.Invoke(bullets[(int)BulletType.Lightning].bulletSetting.currentBullet, bullets[(int)BulletType.Lightning].bulletSetting.possessionBullet);
-                    break;
-                case BulletType.Freezing:
-                    if (bullets[(int)BulletType.Freezing].bulletSetting.currentBullet <= 0) return;
-                    bullets[(int)BulletType.Freezing].bulletSetting.currentBullet--;
-                    onAmmoEvent.Invoke(bullets[(int)BulletType.Freezing].bulletSetting.currentBullet, bullets[(int)BulletType.Freezing].bulletSetting.possessionBullet);
-                    break;
-            }
+            AttackStting(mainWeapon.BulletType);
 
             string animation = animator.AimModeIs == true ? "AimFire" : "Fire";
             animator.Play(animation, -1, 0);
@@ -246,7 +224,7 @@ public class WeaponAssaultRifle : WeaponBase
             {
                 isReload = false;
 
-                AmmoCheak();
+                BulletReload(mainWeapon.BulletType);
 
                 yield break;
             }
@@ -255,14 +233,25 @@ public class WeaponAssaultRifle : WeaponBase
         }
     }
 
-    void AmmoCheak()
+    void AttackStting(BulletType type)
     {
-        if (CurrentpossessionAmmo <= 0) return;
+        if (bullets[(int)type].bulletSetting.currentBullet <= 0) return;
+        bullets[(int)type].bulletSetting.currentBullet--;
+        onAmmoEvent.Invoke(bullets[(int)type].bulletSetting.currentBullet, bullets[(int)type].bulletSetting.possessionBullet);
+        mainWeapon.bulletSetting.currentBullet--;
+    }
 
-        int ammoToAdd = Mathf.Min(weaponSetting.maxAmmo - weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
-        weaponSetting.currentAmmo += ammoToAdd;
-        weaponSetting.possessionAmmo -= ammoToAdd;
+    void BulletReload(BulletType type)
+    {
+        int ammoToAdd;
 
-        onAmmoEvent.Invoke(weaponSetting.currentAmmo, weaponSetting.possessionAmmo);
+        ammoToAdd = Mathf.Min(bullets[(int)type].bulletSetting.maxBullet - bullets[(int)type].bulletSetting.currentBullet, bullets[(int)type].bulletSetting.possessionBullet);
+        bullets[(int)type].bulletSetting.currentBullet += ammoToAdd;
+        bullets[(int)type].bulletSetting.possessionBullet -= ammoToAdd;
+        onAmmoEvent.Invoke(bullets[(int)type].bulletSetting.currentBullet, bullets[(int)type].bulletSetting.possessionBullet);
+
+        ammoToAdd = Mathf.Min(mainWeapon.bulletSetting.maxBullet - mainWeapon.bulletSetting.currentBullet, mainWeapon.bulletSetting.possessionBullet);
+        mainWeapon.bulletSetting.currentBullet += ammoToAdd;
+        mainWeapon.bulletSetting.possessionBullet -= ammoToAdd;
     }
 }

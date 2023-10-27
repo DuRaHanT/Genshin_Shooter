@@ -2,11 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DebuffBase : MonoBehaviour
 {
     public DebuffSetting debuffSetting;
+
+    [SerializeField] Sprite[] debuffIconImages;
+    [SerializeField] Image debuffIcon;
+
     bool isState = true;
+    bool isSlow;
+    float delayTime => 3.0f;
+    float slowSpeed => 0.5f;
+    float maxHealthProportion => 0.1f; // 최대 체력 비례
+    float zero => 0;
+    float one => 1;
+
+    float thisRunSpeed;
+    float thiswalkSpeed;
+    float Timer;
+
+    Status status;
+
+    void Awake()
+    {
+        status = this.GetComponent<Status>();
+
+        thisRunSpeed = status.runSpeed;
+        thiswalkSpeed = status.walkSpeed;
+
+        ResetDebuff();
+    }
 
     public void UpdateReaction()
     {
@@ -26,63 +53,72 @@ public class DebuffBase : MonoBehaviour
     void BurnFreezingReaction()
     {
         Debug.Log("burn & freezing");
-        ResetDebuff();
+
     }
 
     void BurnLightningReaction()
     {
         Debug.Log("burn & lightning");
-        ResetDebuff();
+
     }
 
     void BurnAirReaction()
     {
         Debug.Log("burn & air");
-        ResetDebuff();
+
     }
 
     void BurnWaterReaction()
     {
         Debug.Log("burn & water");
-        ResetDebuff();
+
     }
 
     void AirFreezingReaction()
     {
         Debug.Log("air & freezing");
-        ResetDebuff();
+
     }
 
     void AirLightningReaction()
     {
         Debug.Log("air & lightning");
-        ResetDebuff();
+
     }
 
     void AirWaterReaction()
     {
         Debug.Log("air & water");
-        ResetDebuff();
+
     }
 
     void LightningFreezingReaction()
     {
         Debug.Log("lightning & freezing");
-        ResetDebuff();
+
     }
 
     void LightningWaterReaction()
     {
         Debug.Log("lightning & water");
-        ResetDebuff();
+
     }
 
     void FreezingWaterReaction()
     {
         Debug.Log("freezing & water");
-        this.GetComponent<Status>().runSpeed = 0;
-        this.GetComponent<Status>().walkSpeed = 0;
+        status.runSpeed = zero;
+        status.walkSpeed = zero;
+
+        StartCoroutine("DelayTime");
+    }
+
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(delayTime);
+
         ResetDebuff();
+        ResetState();
     }
 
     void ResetDebuff()
@@ -92,5 +128,85 @@ public class DebuffBase : MonoBehaviour
         debuffSetting.isLightning = !isState;
         debuffSetting.isAir = !isState;
         debuffSetting.isWater = !isState;
+        isSlow = !isState;
+        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, zero);
+    }
+
+    void ResetState()
+    {
+        status.runSpeed = thisRunSpeed;
+        status.walkSpeed = thiswalkSpeed;
+    }
+
+    public void Debuff()
+    {
+        if (debuffSetting.isBurn) Burn();
+        else if (debuffSetting.isFreezing) Freezing();
+        else if (debuffSetting.isAir) Air();
+        else if (debuffSetting.isLightning) Lightning();
+        else if (debuffSetting.isWater) Water();
+    }
+
+    void Burn()
+    {
+        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
+        debuffIcon.sprite = debuffIconImages[(int)DebuffType.Burn];
+
+        if (status.currentHP <= zero) return;
+
+        int dotDeal = (int)((float)status.currentHP * maxHealthProportion);
+
+        Timer += Time.deltaTime;
+
+        if(Timer >= one)
+        {
+            if (dotDeal < one) dotDeal = (int)one;
+
+            status.DecreaseHp(dotDeal);
+
+            Timer = zero;
+        }
+
+        StartCoroutine("DelayTime");
+    }
+
+    void Freezing()
+    {
+        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
+        debuffIcon.sprite = debuffIconImages[(int)DebuffType.Frezzing];
+
+        if (!isSlow)
+        {
+            status.runSpeed = status.runSpeed * slowSpeed;
+            status.walkSpeed = status.walkSpeed * slowSpeed;
+
+            isSlow = isState;
+        }
+
+        StartCoroutine("DelayTime");
+    }
+
+    void Air()
+    {
+        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
+        debuffIcon.sprite = debuffIconImages[(int)DebuffType.Air];
+
+        StartCoroutine("DelayTime");
+    }
+
+    void Lightning()
+    {
+        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
+        debuffIcon.sprite = debuffIconImages[(int)DebuffType.Lightning];
+
+        StartCoroutine("DelayTime");
+    }
+
+    void Water()
+    {
+        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
+        debuffIcon.sprite = debuffIconImages[(int)DebuffType.Water];
+
+        StartCoroutine("DelayTime");
     }
 }
