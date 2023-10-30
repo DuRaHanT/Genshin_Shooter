@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 230964773}
   - component: {fileID: 230964774}
   - component: {fileID: 230964775}
+  - component: {fileID: 230964776}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -874,6 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClipWalk: {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
   audioClipRun: {fileID: 8300000, guid: 0c58744c3b6fdd844b8348066c3f703e, type: 3}
+  bullet: {fileID: 1242274574}
 --- !u!114 &230964770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,6 +921,7 @@ MonoBehaviour:
   onHPEvent:
     m_PersistentCalls:
       m_Calls: []
+  buff: {fileID: 0}
   walkSpeed: 3
   runSpeed: 5
   maxHP: 100
@@ -1064,6 +1067,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 095ff90ead9809e4bbf5452b730cbec7, type: 3}
   - {fileID: 21300000, guid: 412892a2fbaf06046b4d3a5063bffd40, type: 3}
   debuffIcon: {fileID: 864265417}
+--- !u!114 &230964776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230964766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d500301f529ad724d804f0c784142002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &246496083
 GameObject:
   m_ObjectHideFlags: 0

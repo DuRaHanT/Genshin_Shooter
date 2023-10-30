@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     AudioSource audioSource;
     WeaponBase weapon;
     DebuffBase debuffBase;
+    public MainWeapon bullet;
 
     void Awake()
     {

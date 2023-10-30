@@ -18,6 +18,10 @@ public class DebuffBase : MonoBehaviour
     float maxHealthProportion => 0.1f; // 최대 체력 비례
     float zero => 0;
     float one => 1;
+    float two => 2;
+    float detectionRange => 10f;
+    int splashDamage => 20;
+    int additional_Damage => 25;
 
     float thisRunSpeed;
     float thiswalkSpeed;
@@ -52,56 +56,128 @@ public class DebuffBase : MonoBehaviour
 
     void BurnFreezingReaction()
     {
-        Debug.Log("burn & freezing");
+        status.buff.buffSetting.resistance = two;
 
+        ResetDebuff();
     }
 
     void BurnLightningReaction()
     {
-        Debug.Log("burn & lightning");
+        Vector3 thisObjectPosition = transform.position;
 
+        Collider[] colliders = Physics.OverlapSphere(thisObjectPosition, detectionRange);
+
+        foreach (Collider hit in colliders)
+        {
+            PlayerController player = hit.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage(splashDamage);
+                continue;
+            }
+
+            EnemyFSM enemy = hit.GetComponent<EnemyFSM>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(splashDamage);
+                continue;
+            }
+
+            InteractionObject interaction = hit.GetComponent<InteractionObject>();
+            if (interaction != null) interaction.TakeDamage(splashDamage);
+        }
+        ResetDebuff();
     }
 
     void BurnAirReaction()
     {
-        Debug.Log("burn & air");
+        Vector3 thisObjectPosition = transform.position;
 
+        Collider[] colliders = Physics.OverlapSphere(thisObjectPosition, detectionRange);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (Vector3.Distance(thisObjectPosition, colliders[i].transform.position) <= detectionRange)
+            {
+                colliders[i].GetComponent<DebuffBase>().debuffSetting.isBurn = isState;
+            }
+        }
     }
 
     void BurnWaterReaction()
     {
-        Debug.Log("burn & water");
+        status.additional_Damage = additional_Damage;
 
+        ResetDebuff();
     }
 
     void AirFreezingReaction()
     {
-        Debug.Log("air & freezing");
+        Vector3 thisObjectPosition = transform.position;
 
+        Collider[] colliders = Physics.OverlapSphere(thisObjectPosition, detectionRange);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (Vector3.Distance(thisObjectPosition, colliders[i].transform.position) <= detectionRange)
+            {
+                colliders[i].GetComponent<DebuffBase>().debuffSetting.isFreezing = isState;
+            }
+        }
     }
 
     void AirLightningReaction()
     {
-        Debug.Log("air & lightning");
+        Vector3 thisObjectPosition = transform.position;
 
+        Collider[] colliders = Physics.OverlapSphere(thisObjectPosition, detectionRange);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (Vector3.Distance(thisObjectPosition, colliders[i].transform.position) <= detectionRange)
+            {
+                colliders[i].GetComponent<DebuffBase>().debuffSetting.isLightning = isState;
+            }
+        }
     }
 
     void AirWaterReaction()
     {
-        Debug.Log("air & water");
+        Vector3 thisObjectPosition = transform.position;
 
+        Collider[] colliders = Physics.OverlapSphere(thisObjectPosition, detectionRange);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (Vector3.Distance(thisObjectPosition, colliders[i].transform.position) <= detectionRange)
+            {
+                colliders[i].GetComponent<DebuffBase>().debuffSetting.isWater = isState;
+            }
+        }
     }
 
     void LightningFreezingReaction()
     {
-        Debug.Log("lightning & freezing");
+        status.buff.ResistanceDown();
 
+        StartCoroutine("DelayTime");
     }
 
     void LightningWaterReaction()
     {
-        Debug.Log("lightning & water");
+        Vector3 thisObjectPosition = transform.position;
 
+        Collider[] colliders = Physics.OverlapSphere(thisObjectPosition, detectionRange);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (Vector3.Distance(thisObjectPosition, colliders[i].transform.position) <= detectionRange && colliders[i].GetComponent<DebuffBase>().debuffSetting.isWater == isState)
+            {
+                colliders[i].GetComponent<DebuffBase>().debuffSetting.isLightning = isState;
+            }
+        }
+
+        StartCoroutine("DelayTime");
     }
 
     void FreezingWaterReaction()
@@ -198,6 +274,16 @@ public class DebuffBase : MonoBehaviour
     {
         debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
         debuffIcon.sprite = debuffIconImages[(int)DebuffType.Lightning];
+
+        Timer += Time.deltaTime;
+
+        if (Timer >= one)
+        {
+            status.runSpeed = zero;
+            status.walkSpeed = zero;
+
+            Timer = zero;
+        }
 
         StartCoroutine("DelayTime");
     }

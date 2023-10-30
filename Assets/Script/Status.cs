@@ -8,6 +8,7 @@ public class HPEvent : UnityEngine.Events.UnityEvent<int, int> { }
 public class Status : MonoBehaviour
 {
     [HideInInspector] public HPEvent onHPEvent = new HPEvent();
+    [HideInInspector] public BuffBase buff;
 
     [Header("Walk, Run Speed")]
     public float walkSpeed;
@@ -17,11 +18,17 @@ public class Status : MonoBehaviour
     public int maxHP;
     public int currentHP;
 
-    void Awake() => currentHP = maxHP;
+    public int additional_Damage;
+
+    void Awake()
+    {
+        currentHP = maxHP;
+        buff = GetComponent<BuffBase>();
+    }
     
     public bool DecreaseHp(int damage)
     {
-        currentHP = currentHP - damage > 0 ? currentHP - damage : 0;
+        currentHP = currentHP - (int)(buff.buffSetting.resistance * damage) + additional_Damage > 0 ? currentHP - (int)(buff.buffSetting.resistance * damage) + additional_Damage : 0;
 
         onHPEvent.Invoke(currentHP, currentHP);
 
@@ -29,6 +36,8 @@ public class Status : MonoBehaviour
 
         return false;
     }
+
+    public int AdditionalDamageChack() => additional_Damage;
 
     public void IncreaseHP(int hp)
     {
