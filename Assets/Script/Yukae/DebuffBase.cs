@@ -272,6 +272,8 @@ public class DebuffBase : MonoBehaviour
 
     void Lightning()
     {
+        int randomDeal = (int)UnityEngine.Random.Range(one, splashDamage);
+
         debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, one);
         debuffIcon.sprite = debuffIconImages[(int)DebuffType.Lightning];
 
@@ -281,6 +283,8 @@ public class DebuffBase : MonoBehaviour
         {
             status.runSpeed = zero;
             status.walkSpeed = zero;
+
+            status.DecreaseHp(randomDeal);
 
             Timer = zero;
         }

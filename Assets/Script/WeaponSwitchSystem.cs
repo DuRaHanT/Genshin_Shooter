@@ -56,12 +56,4 @@ public class WeaponSwitchSystem : MonoBehaviour
     {
         if (weapons[(int)weaponType] != null) weapons[(int)weaponType].IncreaseMaxAmmo(Ammo);
     }
-
-    public void IncreasespossessionAmmo(int Ammo)
-    {
-        for (int i = 0; i < weapons.Length; ++i)
-        {
-            if (weapons[i] != null) weapons[i].IncreaseMaxAmmo(Ammo);
-        }
-    }
 }

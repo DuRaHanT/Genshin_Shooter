@@ -28,7 +28,21 @@ public class Status : MonoBehaviour
     
     public bool DecreaseHp(int damage)
     {
-        currentHP = currentHP - (int)(buff.buffSetting.resistance * damage) + additional_Damage > 0 ? currentHP - (int)(buff.buffSetting.resistance * damage) + additional_Damage : 0;
+        int shield = buff.buffSetting.shield;
+
+        int totalDamage = (int)(buff.buffSetting.resistance * damage) + additional_Damage;
+
+        if (shield > 0)
+        {
+            if (shield - totalDamage > 0) shield -= totalDamage;
+            if (shield - totalDamage <= 0)
+            {
+                shield = 0;
+                currentHP = currentHP + shield - totalDamage;
+            }
+        }
+
+        else if(shield <= 0) currentHP = currentHP - totalDamage > 0 ? currentHP - totalDamage : 0;
 
         onHPEvent.Invoke(currentHP, currentHP);
 
@@ -38,6 +52,12 @@ public class Status : MonoBehaviour
     }
 
     public int AdditionalDamageChack() => additional_Damage;
+
+    public void SpeedUP()
+    {
+        walkSpeed *= buff.buffSetting.speedUp;
+        runSpeed *= buff.buffSetting.speedUp;
+    }
 
     public void IncreaseHP(int hp)
     {

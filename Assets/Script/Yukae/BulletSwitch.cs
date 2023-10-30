@@ -53,4 +53,11 @@ public class BulletSwitch : MonoBehaviour
         mainWeapon.bulletSetting.possessionBullet = bulletAbilityButton[(int)type].GetComponent<Bullet>().bulletSetting.possessionBullet;
         mainWeapon.bulletSetting.maxBullet = bulletAbilityButton[(int)type].GetComponent<Bullet>().bulletSetting.maxBullet;
     }
+
+    public void IncreasespossessionAmmo(BulletType type, int bullet)
+    {
+        bulletAbilityButton[(int)type].GetComponent<Bullet>().IncreaseMaxAmmo(bullet);
+        mainWeapon.bulletSetting.currentBullet = bulletAbilityButton[(int)type].GetComponent<Bullet>().bulletSetting.currentBullet;
+        mainWeapon.bulletSetting.possessionBullet = bulletAbilityButton[(int)type].GetComponent<Bullet>().bulletSetting.possessionBullet;
+    }
 }

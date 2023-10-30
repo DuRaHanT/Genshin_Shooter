@@ -6,6 +6,5 @@ public class MainGrenadeType : GrenadeBase
 {
     public override void StartWeaponAction()
     {
-        throw new System.NotImplementedException();
     }
 }

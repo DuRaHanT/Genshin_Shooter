@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemMagazine : ItemBase
+public class BulletItem : BulletBase
 {
     [SerializeField] GameObject magazineEffectPrefab;
     [SerializeField] int increasePossessionAmmo;
@@ -10,7 +10,7 @@ public class ItemMagazine : ItemBase
 
     IEnumerator Start()
     {
-        while(true)
+        while (true)
         {
             transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
 
@@ -18,24 +18,12 @@ public class ItemMagazine : ItemBase
         }
     }
 
-    public override void Use(GameObject entity)
+    public void Use(GameObject entity)
     {
-        entity.GetComponentInChildren<WeaponSwitchSystem>().IncreasespossessionAmmo(WeaponType.Sub, increasePossessionAmmo);
+        entity.GetComponentInChildren<BulletSwitch>().IncreasespossessionAmmo(BulletType, increasePossessionAmmo);
 
         Instantiate(magazineEffectPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
-    }
-
-    public override void StartWeaponAction(int type = 0)
-    {
-    }
-
-    public override void StopWeaponAction(int type = 0)
-    {
-    }
-
-    public override void StartReload()
-    {
     }
 }
