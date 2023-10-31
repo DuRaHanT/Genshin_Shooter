@@ -9,6 +9,7 @@ fps 기본 베이스 참고 영상 : https://www.youtube.com/playlist?list=PLC2T
 버프			// 진행 x
 총알 추가 아이템		// 진행 x
 버프 아이템		// 진행 x
+nevmesh			// 진행 x
 
 ---------- 원소 반응 ------------------
 아이콘 띄우기		// 완료
