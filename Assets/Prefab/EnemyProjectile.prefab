@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4677778465470565650}
   - component: {fileID: 8607336529449588844}
   - component: {fileID: 5966289223082378887}
+  - component: {fileID: 3936917973504433094}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: Bullet
@@ -125,3 +126,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+--- !u!114 &3936917973504433094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812566485377112208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7085b02b84bcaf342bc4905545a82401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffSetting:
+    debuffType: 0
+    isBurn: 0
+    isAir: 0
+    isLightning: 0
+    isFreezing: 0
+    isWater: 0
+  debuffIconImages: []
+  debuffIcon: {fileID: 0}
