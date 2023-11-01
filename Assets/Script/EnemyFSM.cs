@@ -217,9 +217,6 @@ public class EnemyFSM : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-
-        //damage = buffBase.buffSetting.shield - (int)(damage * buffBase.buffSetting.resistance);
-
         bool isDie = status.DecreaseHp(damage);
 
         float normalizedHP = (float)status.currentHP / (float)status.maxHP;
@@ -244,7 +241,8 @@ public class EnemyFSM : MonoBehaviour
             case BulletType.Freezing:
                 debuffBase.debuffSetting.isFreezing = true;
                 break;
-
+            case BulletType.Nomal:
+                break;
         }
     }
 
@@ -257,6 +255,8 @@ public class EnemyFSM : MonoBehaviour
                 break;
             case GrenadeType.Water:
                 debuffBase.debuffSetting.isWater = true;
+                break;
+            case GrenadeType.None:
                 break;
 
         }

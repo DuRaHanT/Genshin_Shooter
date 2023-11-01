@@ -1,6 +1,7 @@
 
 public enum ResistanceType { Nomal, Burn, Lightning, Freezing, Air, Water }
 
+[System.Serializable]
 public class BuffSetting
 {
     public ResistanceType resistanceType;

@@ -14,15 +14,12 @@ public class WeaponGrenade : WeaponBase
     [SerializeField] InventotyGrenade inventotyGrenade;
     public MainGrenadeType mainGrenadeType;
 
-    void OnEnable()
-    {
-        onAmmoEvent.Invoke(mainGrenadeType.grenadeSetting.currentGrenade, mainGrenadeType.grenadeSetting.possessionGrenade);
-    }
+    void OnEnable() => onAmmoEvent.Invoke(mainGrenadeType.grenadeSetting.currentGrenade, mainGrenadeType.grenadeSetting.possessionGrenade);
 
     void Awake()
     {
         base.Setup();
-        weaponSetting.currentAmmo = mainGrenadeType.grenadeSetting.currentGrenade; // 아마 지워도 될듯
+        weaponSetting.currentAmmo = mainGrenadeType.grenadeSetting.currentGrenade;
     }
 
     public override void StartWeaponAction(int type = 0)

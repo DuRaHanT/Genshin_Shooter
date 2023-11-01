@@ -112,24 +112,26 @@ public class PlayerController : MonoBehaviour
         weapon = newWeapon;
     }
 
-    public void EnemyReaction(PlayType type)
+    public void EnemyReaction(DebuffType type)
     {
         switch(type)
         {
-            case PlayType.Burn:
+            case DebuffType.Burn:
                 debuffBase.debuffSetting.isBurn = true;
                 break;
-            case PlayType.Air:
+            case DebuffType.Air:
                 debuffBase.debuffSetting.isAir = true;
                 break;
-            case PlayType.Water:
+            case DebuffType.Water:
                 debuffBase.debuffSetting.isWater = true;
                 break;
-            case PlayType.Freezing:
+            case DebuffType.Frezzing:
                 debuffBase.debuffSetting.isFreezing = true;
                 break;
-            case PlayType.Lightning:
+            case DebuffType.Lightning:
                 debuffBase.debuffSetting.isLightning = true;
+                break;
+            case DebuffType.Nomal:
                 break;
         }
     }
@@ -143,6 +145,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case GrenadeType.Water:
                 debuffBase.debuffSetting.isWater = true;
+                break;
+            case GrenadeType.None:
                 break;
         }
     }

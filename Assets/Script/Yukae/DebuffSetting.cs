@@ -1,5 +1,5 @@
 
-public enum DebuffType { Burn, Frezzing, Lightning, Air, Water, }
+public enum DebuffType { Burn, Frezzing, Lightning, Air, Water, Nomal }
 
 [System.Serializable]
 public struct DebuffSetting
