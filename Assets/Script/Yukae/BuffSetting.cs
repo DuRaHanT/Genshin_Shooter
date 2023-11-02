@@ -8,6 +8,7 @@ public class BuffSetting
     public float resistance;
     public bool[] typeImmune;
     public int shield;
+    public int maxShield => 100;
     public float speedUp;
     public int damageUP;
 }
