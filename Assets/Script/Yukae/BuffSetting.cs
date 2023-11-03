@@ -1,12 +1,8 @@
 
-public enum ResistanceType { Nomal, Burn, Lightning, Freezing, Air, Water }
-
 [System.Serializable]
 public class BuffSetting
 {
-    public ResistanceType resistanceType;
-    public float resistance;
-    public bool[] typeImmune;
+    public float resistance;        // 100% == 1.0f
     public int shield;
     public int maxShield => 100;
     public float speedUp;

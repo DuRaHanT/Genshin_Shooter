@@ -35,6 +35,7 @@ public class ExplosionBarrel : InteractionObject
             if(player != null)
             {
                 player.TakeDamage(50);
+                player.GetComponent<DebuffBase>().debuffSetting.isBurn = true;
                 continue;
             }
 
@@ -42,6 +43,7 @@ public class ExplosionBarrel : InteractionObject
             if(enemy != null)
             {
                 enemy.TakeDamage(300);
+                enemy.GetComponent<DebuffBase>().debuffSetting.isBurn = true;
                 continue;
             }
 

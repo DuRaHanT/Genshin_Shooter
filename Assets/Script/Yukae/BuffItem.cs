@@ -36,6 +36,7 @@ public class BuffItem : BuffBase
             if (buffSetting.maxShield < other.GetComponent<BuffBase>().buffSetting.shield + shiled) other.GetComponent<BuffBase>().buffSetting.shield = buffSetting.maxShield;
             else AddShield(shiled);
             DamageUP(damageUP);
+            ResistanceUp();
             StartCoroutine(DelayTime(speedUp, other.GetComponent<Status>().walkSpeed, other.GetComponent<Status>().runSpeed));
         }
 
