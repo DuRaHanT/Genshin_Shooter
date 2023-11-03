@@ -7,12 +7,12 @@ public class EnemyProjectile : MonoBehaviour
     MovementTransform movement;
     [SerializeField] float projectileDistance => 30;
     [SerializeField] int damage = 5;
-    [SerializeField] DebuffBase debuffBase;
+    DebuffType type;
 
-    public void Setup(Vector3 position)
+    public void Setup(Vector3 position, DebuffType debuffType)
     {
         movement = GetComponent<MovementTransform>();
-
+        type = debuffType;
         StartCoroutine("OnMove", position);
 
     }
@@ -40,7 +40,7 @@ public class EnemyProjectile : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             other.GetComponent<PlayerController>().TakeDamage(damage);
-            other.GetComponent<PlayerController>().EnemyReaction(debuffBase.debuffSetting.debuffType);
+            other.GetComponent<PlayerController>().EnemyReaction(type);
             Destroy(gameObject);
         }
     }

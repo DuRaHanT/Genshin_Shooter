@@ -27,7 +27,6 @@ public class EnemyFSM : MonoBehaviour
     Transform target;
     EnemyMemoryPool enemyMemoryPool;
     DebuffBase debuffBase;
-    BuffBase buffBase;
 
     public void Setup(Transform target, EnemyMemoryPool enemyMemoryPool)
     {
@@ -36,7 +35,6 @@ public class EnemyFSM : MonoBehaviour
         this.target = target;
         this.enemyMemoryPool = enemyMemoryPool;
         debuffBase = GetComponent<DebuffBase>();
-        buffBase = GetComponent<BuffBase>();
 
         navMeshAgent.updateRotation = false;
     }
@@ -174,7 +172,7 @@ public class EnemyFSM : MonoBehaviour
                 lastAttackTime = Time.time;
 
                 GameObject clone = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-                clone.GetComponent<EnemyProjectile>().Setup(target.position);
+                clone.GetComponent<EnemyProjectile>().Setup(target.position, debuffBase.debuffSetting.debuffType);
             }
 
             yield return null;

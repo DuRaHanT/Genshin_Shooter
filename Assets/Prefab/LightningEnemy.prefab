@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4806349144836744885}
   - component: {fileID: -5182898170797614147}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: LightningEnemy
   m_TagString: ImpactEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   buff: {fileID: 0}
   walkSpeed: 1.5
   runSpeed: 3
-  maxHP: 100
+  maxHP: 300
   currentHP: 0
   additional_Damage: 0
 --- !u!195 &4427665275864754429
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffSetting:
-    resistance: 1
+    resistance: 0.6
     shield: 0
     speedUp: 0
     damageUP: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debuffSetting:
-    debuffType: 0
+    debuffType: 2
     isBurn: 0
     isAir: 0
     isLightning: 0
@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3378292106986425813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 2, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 469592815874903308}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1562044543094662248}
   - component: {fileID: 5326283242378385398}
   - component: {fileID: 7331454713859422732}
-  - component: {fileID: 7895381874908878424}
+  - component: {fileID: 6119742754661774286}
   m_Layer: 0
   m_Name: EnemyBody
   m_TagString: ImpactEnemy
@@ -277,7 +277,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3554287411257962520}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7331454713859422732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e216ec05afaaf14483e83ebd3942d86, type: 2}
+  - {fileID: 2100000, guid: 1a2d97af75cf3764ab9f881301dceec9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,8 +320,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7895381874908878424
-CapsuleCollider:
+--- !u!65 &6119742754661774286
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -330,9 +330,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4996388472892770852
 GameObject:
