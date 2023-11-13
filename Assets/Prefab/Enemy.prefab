@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debuffSetting:
-    debuffType: 0
+    debuffType: 5
     isBurn: 0
     isAir: 0
     isLightning: 0

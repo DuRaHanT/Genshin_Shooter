@@ -7,8 +7,8 @@ public class EnemyMemoryPool : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] GameObject enemySpawnPointPrefab;
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] float enemySpawnTime = 1;
-    [SerializeField] float enemySpawnLatency = 1;
+    [SerializeField] float enemySpawnTime = 5;
+    [SerializeField] float enemySpawnLatency = 10;
 
     MemoryPool spawnPointMemoryPool;
     MemoryPool enemyMemoryPool;

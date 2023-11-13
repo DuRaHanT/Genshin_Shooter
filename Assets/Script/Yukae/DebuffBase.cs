@@ -205,7 +205,7 @@ public class DebuffBase : MonoBehaviour
         debuffSetting.isAir = !isState;
         debuffSetting.isWater = !isState;
         isSlow = !isState;
-        debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, zero);
+        if(CompareTag("Player")) debuffIcon.color = new Color(debuffIcon.color.r, debuffIcon.color.g, debuffIcon.color.b, zero);
     }
 
     void ResetState()

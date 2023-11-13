@@ -239,8 +239,7 @@ public class EnemyFSM : MonoBehaviour
             case BulletType.Freezing:
                 debuffBase.debuffSetting.isFreezing = true;
                 break;
-            case BulletType.Nomal:
-                break;
+            case BulletType.Nomal: return;
         }
     }
 
@@ -254,9 +253,7 @@ public class EnemyFSM : MonoBehaviour
             case GrenadeType.Water:
                 debuffBase.debuffSetting.isWater = true;
                 break;
-            case GrenadeType.None:
-                break;
-
+            case GrenadeType.None: return;
         }
     }
 }
